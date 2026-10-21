@@ -12,6 +12,6 @@ python3 scripts/render-previews.py
 ```
 
 O render ocorre em arquivos temporários, sem alterar a configuração do desktop.
-A grade inclui os sete plugins autorais, o tema e as cinco adaptações creditadas.
+A grade inclui os oito plugins autorais, o tema e as cinco adaptações creditadas.
 A contagem usa a imagem autoral de `assets/travel-documents.png` e uma data fictícia.
 Os PNGs resultantes são versionados e exibidos na grade do README.

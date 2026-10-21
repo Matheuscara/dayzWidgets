@@ -143,6 +143,14 @@
           "Per-monitor IPC targets avoid duplicate handler registrations"
         ]
       }
+    },
+    {
+      "directory": "DayzWallpapers",
+      "id": "dayzWallpapers",
+      "name": "Dayz Wallpapers",
+      "type": "daemon",
+      "kind": "original",
+      "license": "MIT"
     }
   ]
 }

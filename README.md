@@ -3,7 +3,7 @@
 Widgets de desktop e barra para **DankMaterialShell**, por [Matheuscara](https://github.com/Matheuscara).
 
 Superfícies Graphite translúcidas, tipografia legível e movimento discreto. Uma
-coleção com **7 plugins autorais**, **5 adaptações creditadas** e um tema opcional.
+coleção com **8 plugins autorais**, **5 adaptações creditadas** e um tema opcional.
 Testada originalmente em **DMS 1.4.6 + Niri**, em notebook e monitor ultrawide.
 
 ## Coleção autoral · MIT
@@ -13,51 +13,59 @@ Testada originalmente em **DMS 1.4.6 + Niri**, em notebook e monitor ultrawide.
 <table>
 <tr>
 <td width="50%" valign="top">
+<a href="plugins/DayzWallpapers"><img src="docs/previews/wallpapers.png" alt="Prévia de DayzWallpapers" width="460"></a><br>
+<strong><a href="plugins/DayzWallpapers">DayzWallpapers</a></strong><br>
+<sub>Seletor · Categorias por pasta e troca automática configurável.</sub>
+</td>
+<td width="50%" valign="top">
 <a href="plugins/QuietClock"><img src="docs/previews/quiet-clock.png" alt="Prévia de QuietClock" width="460"></a><br>
 <strong><a href="plugins/QuietClock">QuietClock</a></strong><br>
 <sub>Desktop · Hora, data e mostrador analógico.</sub>
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="plugins/NordMediaCard"><img src="docs/previews/media-card.png" alt="Prévia de NordMediaCard" width="460"></a><br>
 <strong><a href="plugins/NordMediaCard">NordMediaCard</a></strong><br>
 <sub>Desktop · Capa, controles MPRIS e seek.</sub>
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="plugins/NordHub"><img src="docs/previews/hub.png" alt="Prévia de NordHub" width="460"></a><br>
 <strong><a href="plugins/NordHub">NordHub</a></strong><br>
 <sub>Barra · Central de ferramentas, desempenho e clima.</sub>
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="plugins/QuickShortcuts"><img src="docs/previews/shortcuts.png" alt="Prévia de QuickShortcuts" width="460"></a><br>
 <strong><a href="plugins/QuickShortcuts">QuickShortcuts</a></strong><br>
 <sub>Barra · Acesso rápido aos seus aplicativos.</sub>
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="plugins/AnimeGallery"><img src="docs/previews/gallery.png" alt="Prévia de AnimeGallery" width="460"></a><br>
 <strong><a href="plugins/AnimeGallery">AnimeGallery</a></strong><br>
 <sub>Desktop · Imagens locais e navegação por clique.</sub>
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="plugins/CommandShelf"><img src="docs/previews/commands.png" alt="Prévia de CommandShelf" width="460"></a><br>
 <strong><a href="plugins/CommandShelf">CommandShelf</a></strong><br>
 <sub>Desktop · Catálogo de comandos com busca e cópia.</sub>
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <a href="plugins/BitwardenBar"><img src="docs/previews/bitwarden.png" alt="Prévia de BitwardenBar" width="460"></a><br>
 <strong><a href="plugins/BitwardenBar">BitwardenBar</a></strong><br>
 <sub>Barra · Acesso ao daemon Bitwarden compartilhado.</sub>
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <a href="themes/graphite.json"><img src="docs/previews/graphite.png" alt="Prévia de Graphite · tema" width="460"></a><br>
 <strong><a href="themes/graphite.json">Graphite · tema</a></strong><br>
 <sub>Paleta opcional que acompanha a coleção.</sub>
 </td>
+<td></td>
 </tr>
 </table>
 
@@ -170,6 +178,9 @@ python3 -m unittest discover -s tests -v
 # Com Qt 6 Test/Quick instalado:
 QT_QPA_PLATFORM=offscreen qmltestrunner -input tests/qml -o -,txt
 ```
+
+Para testar o agendamento real por 60 segundos, com SessionData isolado e imagens
+fictícias: `python3 scripts/test-wallpaper-runtime.py` (requer Quickshell).
 
 Os testes verificam parser de comandos sem executar comandos descobertos,
 instalação isolada, idempotência, backups e manifests. Os testes Qt cobrem configuração,

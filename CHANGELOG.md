@@ -1,5 +1,13 @@
 # Changelog
 
+## Dayz Wallpapers — 20-10-2026
+
+- Oitavo plugin autoral: carrossel com categorias por pasta, navegação e aplicação nativa do wallpaper.
+- Agendamento persistente por categoria, modo aleatório/sequencial, intervalo de 1–1440 minutos e pausa.
+- Índice limitado, validação antes da aplicação, deduplicação de links e cache de miniaturas do DMS.
+- Sete testes Python do índice/seletor; teste nativo isolado do timer de 60 segundos com o seletor fechado.
+- Prévia ilustrativa sem fotos pessoais na grade do README.
+
 ## Envio pronto para revisão humana — 20-10-2026
 
 - Revisão automática passou a `ready`, sem bloqueios; decisão de inclusão continua com os mantenedores.

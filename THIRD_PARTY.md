@@ -4,6 +4,11 @@ A licença MIT da raiz cobre os plugins autorais, a infraestrutura e o asset
 gerado. Licenças de subdiretórios têm precedência para seus respectivos arquivos.
 Nenhuma adaptação é atribuída integralmente ao mantenedor.
 
+## Dayz Wallpapers
+
+Autoria: Matheuscara. MIT. Implementação independente, sem incorporar código do Wallpaper Carousel.
+Usa os componentes e serviços nativos do DMS como dependência.
+
 ## QuietClock
 
 Autoria: Matheuscara. MIT.

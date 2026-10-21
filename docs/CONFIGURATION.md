@@ -100,3 +100,18 @@ não incorpora helpers/binários e não troca a configuração de autenticação
 interface do DMS; o instalador não troca seu tema. A referência visual é o modo
 escuro. Os plugins usam APIs internas de DMS 1.4.6 e preservam seus IDs, inclusive
 nas adaptações: remova ou substitua instalações duplicadas antes de habilitar.
+
+## Dayz Wallpapers
+
+Habilite `dayzWallpapers`, um daemon sem host obrigatório na barra. Abra com
+`dms ipc call dayzWallpapers toggle`. Em suas configurações, `directory` define a
+pasta absoluta das coleções; `excludedFolders` ignora nomes separados por vírgula.
+Cada pasta/subpasta vira uma categoria. **Todas** combina as imagens disponíveis.
+
+**Agendar troca** permite escolher categoria, ordem e minutos (1–1440).
+A programação fica desligada por padrão e só inicia ao clicar em **Ativar troca**.
+A categoria do timer é independente da que você visita no seletor. **Pausar**
+interrompe; o próximo início do DMS restaura a configuração com intervalo completo.
+O plugin usa o cache de miniaturas do DMS e não baixa imagens em runtime.
+
+[Detalhes, teclado e IPC](../plugins/DayzWallpapers/README.md).

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Renderiza as ilustrações do README com dados fictícios, Chromium e ImageMagick."""
 from pathlib import Path
+import argparse
 import base64
 import shutil
 import subprocess
@@ -53,7 +54,14 @@ style = '''*{box-sizing:border-box}body{margin:0;background:#111619;color:#EDF0E
 
 style += """.grove{width:440px;height:176px;display:flex;align-items:center;gap:14px;padding:10px 24px 10px 8px}.grove>div{flex:1}.grove strong{font-weight:500;font-size:16px}.grove p{font-size:12px;margin:12px 0}.grove small{color:#A2C7D1;font-size:12px}.water{height:4px;background:#3a4345;margin-top:12px;border-radius:4px;overflow:hidden}.water i{display:block;width:97%;height:100%;background:#A2C7D1}.countdown{width:440px;height:220px;background-size:cover;background-position:center;padding:25px;overflow:hidden}.countdown strong{font-size:17px;font-weight:500}.countdown p{font-size:12px;margin:8px 0 16px;color:#d3dedc}.days{font-size:48px;line-height:1.2;font-weight:300}.days small{font-size:15px;color:#edf0ec}.countdown footer{border-top:1px solid #c7d6d22f;padding-top:12px;margin-top:14px;font-size:12px}.weather{width:380px;padding:25px}.weather header{display:flex;justify-content:space-between;align-items:center}.weather header span{font-size:25px;color:#A6B8A5}.degrees{font-size:52px;font-weight:300;margin-top:13px}.weather p{font-size:12px;margin:5px 0 22px}.weather footer{border-top:1px solid #35403e;padding-top:17px;display:flex;gap:30px;font-size:11px;color:#b7cbc9}.album{width:240px;padding:14px}.album .cover{width:210px;height:176px;padding-top:13px}.album .cover span{font-size:17px}.album .cover div{height:85px;width:85px;margin:9px auto}.album .cover small{font-size:10px}.album-caption{padding:12px 3px 1px}.album-caption strong{font-size:13px;font-weight:500}.album-caption>small{display:block;margin-top:4px}.album .transport{justify-content:space-between;margin-top:12px;color:#a6b8a5}.todo{width:420px;padding:22px}.todo header{display:flex;align-items:center;gap:10px;margin-bottom:16px}.todo strong{font-size:15px;font-weight:500}.todo header small{margin-left:auto;font-size:10px}.todo article{display:flex;align-items:center;gap:12px;padding:13px 0;font-size:13px;border-top:1px solid #35403e}.todo article i{height:16px;width:16px;border:1px solid #82978c;border-radius:5px;font-style:normal;font-size:12px;text-align:center;color:#202528}.todo .done{color:#89978f}.todo .done i{background:#a6b8a5}.todo .done span{text-decoration:line-through}.todo footer{margin-top:12px;font-size:12px;color:#a6b8a5}"""
 
+wallpaper_preview = '<div class="widget wallpapers"><header>Dayz Wallpapers <small>Pastas locais · categorias</small></header><div class="wall-categories"><b>Todas</b><span>Paisagens</span><span>Cidades</span><span>Florestas</span></div><div class="wall-film">'+''.join('<div>'+landscape+'</div>' for _ in range(3))+'</div><div class="wall-controls"><b>Aplicar</b><span>Aleatório</span><span>Agendar troca</span></div><footer>30 min · categoria escolhida · aleatória ou em sequência</footer></div>'
+previews.append(('wallpapers',wallpaper_preview))
+style += """.wallpapers{width:530px;padding:18px}.wallpapers header{font-size:18px;font-weight:500}.wallpapers header small{display:block;margin-top:5px;font-weight:400}.wall-categories{display:flex;gap:8px;margin:14px 0;color:#c9d2ce;font-size:10px;align-items:center}.wall-categories>*{border-radius:10px;background:#343b3f;padding:7px 12px;font-weight:400}.wall-categories b{background:#a6b8a5;color:#202528}.wall-film{display:flex;justify-content:center;gap:10px;overflow:hidden;padding:6px 0 10px}.wall-film>div{width:160px;height:110px;border-radius:12px;overflow:hidden;transform:skewX(-8deg);opacity:.55}.wall-film>div:nth-child(2){opacity:1;border:2px solid #a6b8a5}.wall-film svg{width:170px;height:110px;object-fit:cover}.wall-controls{display:flex;justify-content:center;align-items:center;gap:8px;font-size:10px;margin:7px 0 12px}.wall-controls>*{padding:7px 13px;border-radius:10px;background:#343b3f;font-weight:400}.wall-controls b{background:#a6b8a5;color:#202528}.wallpapers footer{font-size:9px;color:#b2bcb8;text-align:center}"""
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--only", action="append", choices=[name for name,_ in previews])
+    args = parser.parse_args()
     chromium = shutil.which('chromium') or shutil.which('google-chrome')
     if not chromium or not shutil.which('magick'):
         raise SystemExit('Requer Chromium/Chrome e ImageMagick (magick).')
@@ -65,9 +73,11 @@ def main():
         shot = temp / 'sheet.png'
         subprocess.run([chromium,'--headless','--no-sandbox','--disable-gpu','--no-first-run','--disable-background-networking','--disable-sync','--disable-extensions','--user-data-dir='+str(temp/'profile'),'--hide-scrollbars','--force-device-scale-factor=1',f'--window-size=1200,{350 * ((len(previews)+1)//2)}','--virtual-time-budget=1000','--screenshot='+str(shot),html.as_uri()],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         for index,(name,_) in enumerate(previews):
+            if args.only and name not in args.only:
+                continue
             geometry = f'600x350+{index%2*600}+{index//2*350}'
             subprocess.run(['magick',str(shot),'-crop',geometry,'+repage',str(OUT/(name+'.png'))],check=True)
-    print(f'{len(previews)} prévias ilustrativas renderizadas em docs/previews/')
+    print(f'{len(args.only) if args.only else len(previews)} prévias ilustrativas renderizadas em docs/previews/')
 
 if __name__ == '__main__':
     main()
