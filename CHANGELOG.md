@@ -1,5 +1,11 @@
 # Changelog
 
+## Envio ao catálogo — 20-10-2026
+
+- Sete plugins autorais enviados ao registro oficial em [PR #1063](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063), aguardando avaliação.
+- Validação de schema, URLs, caminhos e correspondência dos manifests; dez testes locais aprovados.
+- Uso de IA e natureza ilustrativa das prévias declarados no pedido; adaptações excluídas para preservar os IDs upstream.
+
 ## README visual — 20-10-2026
 
 - Prévias das cinco adaptações, incluindo árvore e contagem regressiva, com créditos e dados fictícios.

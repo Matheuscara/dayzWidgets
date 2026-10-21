@@ -105,6 +105,12 @@ duas cópias ativas do mesmo ID.
 </tr>
 </table>
 
+## Catálogo da comunidade
+
+Os sete plugins autorais foram [enviados para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
+A inclusão depende da aprovação dos mantenedores; enquanto isso, instale pelo repositório.
+As cinco adaptações permanecem disponíveis aqui, com os créditos e IDs de origem.
+
 ## Instalar
 
 Requer DMS/Quickshell funcionando e Python 3 para o instalador.
