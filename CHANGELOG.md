@@ -1,5 +1,10 @@
 # Changelog
 
+## README visual — 20-10-2026
+
+- Grade de duas colunas com oito prévias ilustrativas da coleção autoral e tema.
+- Dados fictícios e render reproduzível com Chromium + ImageMagick, sem usar a sessão pessoal.
+
 ## 0.1.0 — 20-10-2026
 
 - Publicação inicial: sete plugins autorais, cinco adaptações creditadas e tema Graphite.

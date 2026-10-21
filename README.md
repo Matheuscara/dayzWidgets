@@ -6,19 +6,60 @@ Superfícies Graphite translúcidas, tipografia legível e movimento discreto. U
 coleção com **7 plugins autorais**, **5 adaptações creditadas** e um tema opcional.
 Testada originalmente em **DMS 1.4.6 + Niri**, em notebook e monitor ultrawide.
 
-![Quiet Clock](docs/clock.png)
-
 ## Coleção autoral · MIT
 
-| Plugin | Superfície | Função |
-|---|---|---|
-| [QuietClock](plugins/QuietClock) | Desktop | Relógio digital, data e mostrador analógico em cartões largos |
-| [NordMediaCard](plugins/NordMediaCard) | Desktop | Capa, faixa, controles MPRIS e seek |
-| [NordHub](plugins/NordHub) | Barra | Central de ferramentas, desempenho e clima; abre no centro da tela |
-| [QuickShortcuts](plugins/QuickShortcuts) | Barra | Atalhos configuráveis por argumentos, sem shell intermediário |
-| [AnimeGallery](plugins/AnimeGallery) | Desktop | Galeria de imagens locais com navegação por clique |
-| [CommandShelf](plugins/CommandShelf) | Desktop | Catálogo dos comandos locais, com busca e cópia; não executa os itens |
-| [BitwardenBar](plugins/BitwardenBar) | Barra | Acesso ao daemon Bitwarden compartilhado; requer integração separada |
+<p>Prévias ilustrativas com dados fictícios. Clique na imagem ou no nome para abrir o componente.</p>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/QuietClock"><img src="docs/previews/quiet-clock.png" alt="Prévia de QuietClock" width="460"></a><br>
+<strong><a href="plugins/QuietClock">QuietClock</a></strong><br>
+<sub>Desktop · Hora, data e mostrador analógico.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="plugins/NordMediaCard"><img src="docs/previews/media-card.png" alt="Prévia de NordMediaCard" width="460"></a><br>
+<strong><a href="plugins/NordMediaCard">NordMediaCard</a></strong><br>
+<sub>Desktop · Capa, controles MPRIS e seek.</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/NordHub"><img src="docs/previews/hub.png" alt="Prévia de NordHub" width="460"></a><br>
+<strong><a href="plugins/NordHub">NordHub</a></strong><br>
+<sub>Barra · Central de ferramentas, desempenho e clima.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="plugins/QuickShortcuts"><img src="docs/previews/shortcuts.png" alt="Prévia de QuickShortcuts" width="460"></a><br>
+<strong><a href="plugins/QuickShortcuts">QuickShortcuts</a></strong><br>
+<sub>Barra · Acesso rápido aos seus aplicativos.</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/AnimeGallery"><img src="docs/previews/gallery.png" alt="Prévia de AnimeGallery" width="460"></a><br>
+<strong><a href="plugins/AnimeGallery">AnimeGallery</a></strong><br>
+<sub>Desktop · Imagens locais e navegação por clique.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="plugins/CommandShelf"><img src="docs/previews/commands.png" alt="Prévia de CommandShelf" width="460"></a><br>
+<strong><a href="plugins/CommandShelf">CommandShelf</a></strong><br>
+<sub>Desktop · Catálogo de comandos com busca e cópia.</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/BitwardenBar"><img src="docs/previews/bitwarden.png" alt="Prévia de BitwardenBar" width="460"></a><br>
+<strong><a href="plugins/BitwardenBar">BitwardenBar</a></strong><br>
+<sub>Barra · Acesso ao daemon Bitwarden compartilhado.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="themes/graphite.json"><img src="docs/previews/graphite.png" alt="Prévia de Graphite · tema" width="460"></a><br>
+<strong><a href="themes/graphite.json">Graphite · tema</a></strong><br>
+<sub>Paleta opcional que acompanha a coleção.</sub>
+</td>
+</tr>
+</table>
 
 ## Versões personalizadas
 
