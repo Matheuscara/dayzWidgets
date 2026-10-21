@@ -29,7 +29,10 @@
       "widgetType": "theGrove",
       "name": "dayz_grove",
       "enabled": true,
-      "config": {},
+      "config": {
+        "treeName": "Minha árvore",
+        "notificationsEnabled": false
+      },
       "positions": {}
     },
     {
@@ -45,14 +48,24 @@
       "widgetType": "dmsDesktopCountdown",
       "name": "dayz_countdown",
       "enabled": true,
-      "config": {},
+      "config": {
+        "label": "Próximo evento",
+        "subtitle": "Preparar documentos",
+        "endDate": "2027-01-01",
+        "startDate": "",
+        "eventIcon": "description",
+        "deadline": true,
+        "dateCaption": "Prazo",
+        "imageDimAmount": 0.62,
+        "showDays": true
+      },
       "positions": {}
     },
     {
       "id": "dayz_album",
       "widgetType": "dankAlbumWidget",
       "name": "dayz_album",
-      "enabled": true,
+      "enabled": false,
       "config": {},
       "positions": {}
     },
@@ -60,7 +73,7 @@
       "id": "dayz_commands",
       "widgetType": "commandShelf",
       "name": "dayz_commands",
-      "enabled": true,
+      "enabled": false,
       "config": {},
       "positions": {}
     }
