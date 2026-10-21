@@ -107,7 +107,10 @@ duas cópias ativas do mesmo ID.
 
 ## Catálogo da comunidade
 
-Os sete plugins autorais foram [enviados para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
+O pedido inicial de sete plugins foi [enviado para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
+Após a revisão automática, o primeiro lote foi reduzido a cinco plugins e corrigido.
+O player fica em um lote separado; BitwardenBar foi retirado desse cadastro por
+depender de um fork. O pedido permanece em rascunho até a descrição escrita pelo autor.
 A inclusão depende da aprovação dos mantenedores; enquanto isso, instale pelo repositório.
 As cinco adaptações permanecem disponíveis aqui, com os créditos e IDs de origem.
 
@@ -136,8 +139,8 @@ Depois:
 3. Para barra, adicione o plugin à composição da barra. Popouts precisam desse host.
 4. Escolha imagens, datas e aplicativos nas configurações de cada widget.
 
-Os atalhos para Clipboard+, OCR, Docker e Wallpaper Carousel são integrações
-opcionais: esses plugins não são distribuídos aqui. O BitwardenBar requer o daemon
+QuickShortcuts e NordHub usam funções nativas por padrão; integrações adicionais
+são configuradas por quem instala. O BitwardenBar requer o daemon
 compatível do [fork Bitwarden](https://github.com/Matheuscara/dms-bitwarden-cli);
 sem ele, o acesso fica desativado e nenhum login é feito automaticamente.
 
@@ -162,10 +165,13 @@ o serviço nativo do DMS. Tarefas e imagens permanecem locais. Não há telemetr
 ```bash
 python3 scripts/check.py
 python3 -m unittest discover -s tests -v
+# Com Qt 6 Test/Quick instalado:
+QT_QPA_PLATFORM=offscreen qmltestrunner -input tests/qml -o -,txt
 ```
 
 Os testes verificam parser de comandos sem executar comandos descobertos,
-instalação isolada, idempotência, backups e manifests. Não são um teste visual do
+instalação isolada, idempotência, backups e manifests. Os testes Qt cobrem configuração,
+JSON inválido, argumentos e caminhos. Não são um teste visual do
 shell inteiro. DMS mais recente que 1.4.6 pode alterar APIs internas; issues e PRs
 são bem-vindos com versão e logs sem dados sensíveis.
 

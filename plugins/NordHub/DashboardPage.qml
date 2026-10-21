@@ -10,6 +10,7 @@ import qs.Modules.DankDash.Overview as Overview
 Item {
     id: page
 
+    property var hubConfig: ({})
     signal requestClose
     signal requestWeather
 
@@ -21,41 +22,13 @@ Item {
     property MprisPlayer player: MprisController.activePlayer
     readonly property bool playing: player?.playbackState === MprisPlaybackState.Playing
 
-    // Default https handler as configured in xdg-mime (resolved when the menu opens).
-    property string browserDesktopId: ""
-
     readonly property var launchers: {
-        const list = [
-            {
-                "name": "Terminal",
-                "desktopId": "Alacritty",
-                "argv": ["alacritty"],
-                "icon": "terminal"
-            },
-            {
-                "name": "Arquivos",
-                "desktopId": "org.kde.dolphin",
-                "argv": ["dolphin"],
-                "icon": "folder"
-            }
-        ];
-        if (browserDesktopId)
-            list.push({
-                "name": "Navegador",
-                "desktopId": browserDesktopId,
-                "argv": [],
-                "icon": "language"
-            });
-        list.push({
-            "name": "Aplicativos",
-            "action": "launcher",
-            "icon": "apps"
-        });
-        list.push({
-            "name": "Configurações",
-            "action": "settings",
-            "icon": "settings"
-        });
+        const list = [];
+        if (typeof hubConfig.terminal === "string" && hubConfig.terminal.trim())
+            list.push({name: "Terminal", argv: [hubConfig.terminal.trim()], icon: "terminal"});
+        list.push({name: "Arquivos", action: "files", icon: "folder"});
+        list.push({name: "Aplicativos", action: "launcher", icon: "apps"});
+        list.push({name: "Configurações", action: "settings", icon: "settings"});
         return list;
     }
 
@@ -71,6 +44,10 @@ Item {
         }
         if (launcher.action === "settings") {
             PopoutService.openSettings();
+            return;
+        }
+        if (launcher.action === "files") {
+            Qt.openUrlExternally("file://" + Quickshell.env("HOME").split("/").map(encodeURIComponent).join("/"));
             return;
         }
         const entry = desktopEntryFor(launcher);
@@ -91,13 +68,7 @@ Item {
         return m + ":" + (rest < 10 ? "0" : "") + rest;
     }
 
-    Component.onCompleted: {
-        WeatherService.addRef();
-        Proc.runCommand("nordHub.defaultBrowser", ["xdg-mime", "query", "default", "x-scheme-handler/https"], (stdout, exitCode) => {
-            if (exitCode === 0)
-                page.browserDesktopId = stdout.trim().replace(/\.desktop$/, "");
-        }, 0);
-    }
+    Component.onCompleted: WeatherService.addRef()
     Component.onDestruction: WeatherService.removeRef()
 
     SystemClock {

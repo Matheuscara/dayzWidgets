@@ -4,19 +4,21 @@ import qs.Modules.Plugins
 PluginSettings {
     pluginId: "quickShortcuts"
     StringSetting {
-        settingKey: "fileManager"
-        label: "Gerenciador de arquivos"
-        description: "Executável, sem argumentos de shell"
-        defaultValue: "xdg-open"
+        settingKey: "shortcutsJson"
+        label: "Atalhos (JSON)"
+        description: "Lista opcional: name, icon e command (lista de argumentos) ou url. Vazio usa funções nativas."
+        defaultValue: ""
     }
     StringSetting {
         settingKey: "terminal"
         label: "Terminal"
-        defaultValue: "alacritty"
+        description: "Executável opcional; vazio oculta o botão."
+        defaultValue: ""
     }
     StringSetting {
         settingKey: "editor"
         label: "Editor"
-        defaultValue: "zeditor"
+        description: "Executável opcional; vazio oculta o botão."
+        defaultValue: ""
     }
 }

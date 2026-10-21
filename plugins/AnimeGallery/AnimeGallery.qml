@@ -1,10 +1,12 @@
 import QtQuick
+import Qt.labs.folderlistmodel
 import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
 import qs.Common
 import qs.Widgets
 import qs.Modules.Plugins
+import "GalleryData.js" as GalleryData
 
 DesktopPluginComponent {
     id: root
@@ -12,19 +14,58 @@ DesktopPluginComponent {
     minHeight: 170
 
     readonly property string directory: pluginData.directory || (Quickshell.env("HOME") + "/Pictures/Wallpapers")
-    property var pictures: []
+    readonly property string manifestPath: pluginData.manifestPath || ""
+    property var folderPictures: []
+    property var manifestPictures: []
+    property string loadError: ""
+    readonly property var pictures: manifestPath ? manifestPictures : folderPictures
     property int currentIndex: 0
     readonly property var current: pictures.length ? pictures[currentIndex % pictures.length] : null
+    onPicturesChanged: currentIndex = 0
+    onManifestPathChanged: {
+        manifestPictures = [];
+        loadError = "";
+    }
+
+    function updateFolder() {
+        const images = [];
+        if (folderModel.status === FolderListModel.Ready) {
+            for (let i = 0; i < folderModel.count; i++)
+                images.push({file: folderModel.get(i, "fileName"), collection: "Minha coleção", width: 0, height: 0});
+        }
+        folderPictures = images;
+    }
+
+    FolderListModel {
+        id: folderModel
+        folder: root.manifestPath ? "" : GalleryData.fileUrl(root.directory)
+        nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp", "*.avif", "*.bmp"]
+        showDirs: false
+        showHidden: false
+        caseSensitive: false
+        sortField: FolderListModel.Name
+        onStatusChanged: root.updateFolder()
+        onCountChanged: root.updateFolder()
+        onFolderChanged: root.folderPictures = []
+    }
 
     FileView {
-        path: root.pluginData.manifestPath || (root.directory + "/manifest.json")
+        path: root.manifestPath
         watchChanges: true
         onLoaded: {
             try {
-                root.pictures = JSON.parse(text()).images.filter(p => typeof p.file === "string" && !p.file.includes("..") && !p.file.startsWith("/"));
+                root.manifestPictures = GalleryData.parseManifest(text());
+                root.loadError = "";
             } catch (_) {
-                root.pictures = [];
+                root.manifestPictures = [];
+                root.loadError = "Manifesto inválido: revise a lista images.";
             }
+        }
+        onLoadFailed: {
+            if (!root.manifestPath)
+                return;
+            root.manifestPictures = [];
+            root.loadError = "Não foi possível ler o manifesto configurado.";
         }
     }
 
@@ -37,7 +78,7 @@ DesktopPluginComponent {
 
         Image {
             anchors.fill: parent
-            source: root.current ? "file://" + root.directory + "/" + root.current.file : ""
+            source: root.current ? GalleryData.fileUrl(root.directory + "/" + root.current.file) : ""
             sourceSize.width: 800
             sourceSize.height: 450
             fillMode: Image.PreserveAspectCrop
@@ -63,38 +104,46 @@ DesktopPluginComponent {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            height: 42
+            height: Theme.fontSizeSmall * 2 + Theme.spacingL
             color: Theme.withAlpha(Theme.surface, 0.94)
 
             Column {
                 anchors.left: parent.left
-                anchors.leftMargin: 14
+                anchors.leftMargin: Theme.spacingM
                 anchors.verticalCenter: parent.verticalCenter
-                spacing: 1
+                anchors.right: collectionButton.left
+                anchors.rightMargin: Theme.spacingS
+                spacing: Theme.spacingXS / 2
 
                 StyledText {
-                    text: root.current ? root.current.collection.replace("Anime-", "") : "Galeria vazia"
+                    text: root.current ? root.current.collection : "Galeria vazia"
+                    width: parent.width
+                    elide: Text.ElideRight
                     textFormat: Text.PlainText
-                    font.pixelSize: 12
+                    font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceText
                 }
                 StyledText {
-                    text: root.current ? root.current.width + "×" + root.current.height + " · clique para avançar" : "Adicione wallpapers à coleção"
-                    font.pixelSize: 10
+                    text: root.loadError || (root.current ? (root.current.width && root.current.height ? root.current.width + "×" + root.current.height + " · " : "") + "Clique para avançar" : "Abra a pasta e adicione imagens")
+                    textFormat: Text.PlainText
+                    width: parent.width
+                    elide: Text.ElideRight
+                    font.pixelSize: Theme.fontSizeSmall * 0.9
                     color: Theme.surfaceVariantText
                 }
             }
 
             DankActionButton {
+                id: collectionButton
                 anchors.right: parent.right
-                anchors.rightMargin: 6
+                anchors.rightMargin: Theme.spacingS
                 anchors.verticalCenter: parent.verticalCenter
                 buttonSize: 30
                 iconSize: 18
                 iconName: "collections"
                 iconColor: Theme.primary
-                tooltipText: "Escolher wallpaper"
-                onClicked: Quickshell.execDetached(["dms", "ipc", "wallpaperCarousel", "open"])
+                tooltipText: "Abrir pasta de imagens"
+                onClicked: Qt.openUrlExternally(GalleryData.fileUrl(root.directory))
             }
         }
     }

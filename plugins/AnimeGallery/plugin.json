@@ -2,7 +2,7 @@
   "id": "animeGallery",
   "name": "Galeria Anime",
   "description": "Quadro de wallpapers locais; clique para avançar e abra a coleção pelo botão",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Matheuscara",
   "type": "desktop",
   "capabilities": [
@@ -12,7 +12,8 @@
   "icon": "photo_library",
   "requires_dms": ">=1.4.6",
   "permissions": [
-    "settings_read"
+    "settings_read",
+    "settings_write"
   ],
   "homepage": "https://github.com/Matheuscara/dayzWidgets",
   "license": "MIT",

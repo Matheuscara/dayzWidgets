@@ -1,5 +1,14 @@
 # Changelog
 
+## Portabilidade — 20-10-2026
+
+- Hub com ferramentas configuráveis, funções nativas por padrão e sem injetar fundos na barra.
+- Galeria com descoberta de imagens na pasta e abertura pelo aplicativo padrão, sem Wallpaper Carousel.
+- CommandShelf lê atalhos opcionais do usuário; nenhuma combinação do compositor é presumida.
+- QuickShortcuts configurável nas duas orientações e sem plugins extras por padrão; permissões de gravação corrigidas.
+- Player com tokens nativos do tema; documentação de diferenças e dependência específica do Bitwarden.
+- Testes Qt para JSON inválido, argumentos, IDs de instância e caminhos de imagem.
+
 ## Envio ao catálogo — 20-10-2026
 
 - Sete plugins autorais enviados ao registro oficial em [PR #1063](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063), aguardando avaliação.

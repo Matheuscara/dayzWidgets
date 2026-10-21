@@ -77,13 +77,6 @@ PluginComponent {
         service: WeatherService
     }
 
-    IslandBackdrops {
-        active: root.pluginData.islandBackdrops ?? false
-        anchorItem: root
-        widgetThickness: root.widgetThickness
-        isVertical: root.isVertical
-    }
-
     popoutWidth: 760
     popoutHeight: 472
 

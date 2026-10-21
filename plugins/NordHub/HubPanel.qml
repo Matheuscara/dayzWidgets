@@ -119,6 +119,7 @@ Item {
         id: dashboardComponent
 
         DashboardPage {
+            hubConfig: panel.hub.pluginData
             onRequestClose: panel.close()
             onRequestWeather: panel.hub.currentTab = 2
         }
@@ -142,6 +143,7 @@ Item {
         id: toolsComponent
 
         ToolsPage {
+            hubConfig: panel.hub.pluginData
             onRequestClose: panel.close()
         }
     }

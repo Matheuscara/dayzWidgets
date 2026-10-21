@@ -39,36 +39,44 @@ O texto/data são renderizados pelo QML. “Hoje” permanece durante o dia inte
 
 ## Galeria
 
-Em AnimeGallery, configure a pasta absoluta das imagens e, opcionalmente, o
-manifesto. O padrão é `~/Pictures/Wallpapers/manifest.json`. Cada item descreve um
-arquivo relativo à pasta, coleção e dimensões reais:
+AnimeGallery descobre imagens diretamente na pasta configurada (`directory`),
+sem subpastas; o padrão é `~/Pictures/Wallpapers`. O botão abre essa pasta no
+aplicativo padrão. Não exige Wallpaper Carousel.
+
+Para escolher a ordem, incluir subpastas e informar metadados, configure um caminho
+absoluto em `manifestPath`:
 
 ```json
 {"images": [{"file": "paisagens/exemplo.jpg", "collection": "Paisagens", "width": 3840, "height": 2160}]}
 ```
 
-O manifesto não baixa imagens. O clique avança; o botão de coleção chama o
-Wallpaper Carousel, se instalado separadamente. Use imagens que você possa usar.
+O manifesto não baixa imagens. Caminhos são relativos à pasta; segmentos `..` e
+caminhos absolutos são rejeitados. Coleção e dimensões são opcionais. Um manifesto
+inválido mostra erro e não exibe os dados da configuração anterior.
 
 ## Atalhos
 
-QuickShortcuts permite configurar terminal, editor e gerenciador na interface.
-Executáveis não devem conter shell nem argumentos concatenados. Para controle
-completo, `shortcuts` no config do plugin aceita uma lista:
+QuickShortcuts mostra por padrão arquivos, notas e configurações nativas.
+Terminal e editor são opcionais. A lista completa pode ser definida em `shortcutsJson`
+(texto JSON na interface) ou `shortcuts` (lista nas preferências declarativas):
 
 ```json
-{"shortcuts": [{"name": "Terminal", "icon": "terminal", "command": ["alacritty"]}]}
+{"shortcuts": [{"name": "Editor", "icon": "code", "command": ["meu-editor", "/pasta/com espaço"]}]}
 ```
 
-O navegador usa o handler do sistema via xdg-open. Atalhos de plugins opcionais
-exigem que esses plugins estejam instalados e tenham host na barra quando necessário.
+Também aceita `url` com esquema `file:`, `https:` ou `http:`. Comandos são listas de
+argumentos sem shell intermediário. A mesma lista funciona nas duas orientações
+da barra. Erros mostram um botão para abrir as configurações.
 
 ## Hub e IDs
 
-NordHub é uma central opcional. Ferramentas ausentes aparecem indisponíveis. Para
-seus botões de desktop controlarem as instâncias corretas, use os IDs indicados no
-[exemplo](../examples/desktop-instances.json), ou ajuste os targets de ToolsPage.qml
-aos IDs gerados pelo seu DMS. Nada é ativado automaticamente.
+NordHub usa apenas ferramentas nativas por padrão. Configure `toolsJson` no painel
+do plugin ou `tools` nas preferências declarativas. Cada integração com outro plugin
+é opcional e usa o ID informado por você. Nenhum ID pessoal é presumido e nenhum
+fundo é injetado na barra. [Tipos e exemplo](../plugins/NordHub/README.md).
+
+O terminal do painel é opcional; arquivos abrem com o aplicativo padrão do sistema.
+As métricas de desempenho precisam de `dgop`; ausente, a página mostra um aviso.
 
 ```bash
 dms ipc widget toggle nordHub
@@ -78,7 +86,9 @@ dms ipc widget toggleWith nordHub tools
 ## CommandShelf e Bitwarden
 
 CommandShelf requer Python 3 e dms no PATH. Lê aliases/funções de topo do bash,
-scripts locais, hosts concretos de SSH e atalhos declarados no helper. Não executa
+scripts locais e hosts concretos de SSH. Os atalhos são opcionais, definidos pelo
+usuário em `~/.config/dayzWidgets/shortcuts.json`, como uma lista de objetos
+`{"keys":"Super + X","description":"Minha ação"}`. Não executa
 os itens. Nenhum catálogo é incluído no Git; a coleta ocorre localmente.
 
 BitwardenBar usa o daemon compatível indicado no README. Não é um cofre independente,

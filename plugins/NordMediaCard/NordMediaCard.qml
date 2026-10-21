@@ -54,11 +54,11 @@ Item {
 
     ClippingRectangle {
         id: artwork
-        x: 18
-        y: 18
+        x: Theme.spacingL
+        y: Theme.spacingL
         width: Math.max(64, Math.min(88, root.height - 72))
         height: width
-        radius: 12
+        radius: Theme.cornerRadius
         color: Theme.withAlpha(Theme.surfaceContainerHighest, 0.7)
 
         DankIcon {
@@ -87,17 +87,17 @@ Item {
     Column {
         id: trackInfo
         anchors.left: artwork.right
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.spacingL
         anchors.right: parent.right
-        anchors.rightMargin: 18
-        y: 20
-        spacing: 4
+        anchors.rightMargin: Theme.spacingL
+        y: Theme.spacingL + Theme.spacingXS
+        spacing: Theme.spacingXS
 
         StyledText {
             width: parent.width
             text: root.hasPlayer ? (root.player.trackTitle || "Sem título") : "Nada tocando"
             textFormat: Text.PlainText
-            font.pixelSize: 15
+            font.pixelSize: Theme.fontSizeMedium
             font.weight: Font.Medium
             color: Theme.surfaceText
             elide: Text.ElideRight
@@ -107,7 +107,7 @@ Item {
             width: parent.width
             text: root.hasPlayer ? (root.player.trackArtist || root.player.identity || "") : "Sua música aparece aqui"
             textFormat: Text.PlainText
-            font.pixelSize: 12
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.surfaceVariantText
             elide: Text.ElideRight
         }
@@ -116,8 +116,8 @@ Item {
     Row {
         anchors.left: trackInfo.left
         anchors.top: trackInfo.bottom
-        anchors.topMargin: 8
-        spacing: 8
+        anchors.topMargin: Theme.spacingS
+        spacing: Theme.spacingS
         visible: root.hasPlayer
 
         DankActionButton {
@@ -134,7 +134,7 @@ Item {
         Rectangle {
             width: 34
             height: 34
-            radius: 12
+            radius: Theme.cornerRadius
             color: Theme.primary
             scale: playArea.pressed && Theme.shortDuration > 0 ? 0.94 : 1
             Behavior on scale {
@@ -183,10 +183,10 @@ Item {
     Item {
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.leftMargin: 18
-        anchors.rightMargin: 18
+        anchors.leftMargin: Theme.spacingL
+        anchors.rightMargin: Theme.spacingL
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 12
+        anchors.bottomMargin: Theme.spacingM
         height: 20
         visible: root.hasPlayer && root.length > 0
 
@@ -195,7 +195,7 @@ Item {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
             text: root.formatTime(root.position)
-            font.pixelSize: 11
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.surfaceVariantText
         }
 
@@ -204,7 +204,7 @@ Item {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             text: root.formatTime(root.length)
-            font.pixelSize: 11
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.surfaceVariantText
         }
 
@@ -212,8 +212,8 @@ Item {
             id: seek
             anchors.left: elapsed.right
             anchors.right: duration.left
-            anchors.leftMargin: 10
-            anchors.rightMargin: 10
+            anchors.leftMargin: Theme.spacingS
+            anchors.rightMargin: Theme.spacingS
             height: parent.height
 
             Rectangle {

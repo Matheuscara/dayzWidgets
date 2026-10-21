@@ -31,16 +31,6 @@ CATEGORIES = [
 ]
 TSV_SECTION = {"shell": "1", "scripts": "2", "nix": "3", "ssh": "4", "desktop": "5"}
 
-# Atalhos do desktop (Win/Super): lista única, usada pelo `ajuda` e pelo widget.
-DESKTOP_SHORTCUTS = [
-    ("Win + Espaço", "Dolphin"),
-    ("Win + Tab", "Overview preservado"),
-    ("Win + Shift + C", "Calculadora"),
-    ("Win + Ctrl + W", "Carrossel de wallpapers"),
-    ("Win + Ctrl + D", "Docker Manager"),
-    ("Win + Shift + B", "Bitwarden"),
-]
-
 # Nerd Font glyphs do renderizador do `ajuda` (só vão no TSV).
 GLYPH_FUNCTION = "\U000f0295"
 GLYPH_GITHUB = "\uf09b"
@@ -276,7 +266,27 @@ def parse_ssh_config(text, source, catalog):
     flush()
 
 
-def collect(home=None, etc_bashrc="/etc/bashrc"):
+def read_shortcuts(path, catalog, home):
+    text = read_text(path, catalog, home)
+    if text is None:
+        return
+    try:
+        shortcuts = json.loads(text)
+        if not isinstance(shortcuts, list) or not all(
+            isinstance(item, dict) and isinstance(item.get("keys"), str)
+            and bool(item["keys"].strip()) and isinstance(item.get("description"), str)
+            for item in shortcuts
+        ):
+            raise ValueError("lista esperada: [{keys, description}]")
+    except (ValueError, TypeError) as error:
+        catalog.warnings.append(f"{display_path(path, home)}: atalhos inválidos ({error})")
+        return
+    for item in shortcuts:
+        catalog.add("desktop", "shortcut", item["keys"], item["keys"], "",
+                    item["description"], display_path(path, home))
+
+
+def collect(home=None, etc_bashrc="/etc/bashrc", shortcuts_file=None):
     home = Path(home) if home is not None else Path.home()
     catalog = Catalog()
 
@@ -297,8 +307,8 @@ def collect(home=None, etc_bashrc="/etc/bashrc"):
     if text is not None:
         parse_ssh_config(text, display_path(ssh_config, home), catalog)
 
-    for keys, description in DESKTOP_SHORTCUTS:
-        catalog.add("desktop", "shortcut", keys, keys, "", description, "niri")
+    read_shortcuts(Path(shortcuts_file) if shortcuts_file else home / ".config/dayzWidgets/shortcuts.json",
+                   catalog, home)
 
     return catalog
 
@@ -331,9 +341,10 @@ def main(argv=None):
     fmt.add_argument("--tsv", dest="format", action="store_const", const="tsv")
     parser.add_argument("--home", help="HOME alternativo (padrão: o do usuário)")
     parser.add_argument("--etc-bashrc", default="/etc/bashrc")
+    parser.add_argument("--shortcuts-file", help="Arquivo JSON opcional de atalhos do usuário")
     args = parser.parse_args(argv)
 
-    catalog = collect(args.home, args.etc_bashrc)
+    catalog = collect(args.home, args.etc_bashrc, args.shortcuts_file)
     if args.format == "tsv":
         sys.stdout.write(to_tsv(catalog))
         for warning in catalog.warnings:

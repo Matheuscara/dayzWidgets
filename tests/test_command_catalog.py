@@ -34,10 +34,24 @@ class CommandCatalogTests(unittest.TestCase):
     def by_name(self, result):
         return {c["name"]: c for c in result.commands}
 
-    def test_missing_optional_sources_only_yield_desktop_shortcuts(self):
+    def test_missing_optional_sources_yield_empty_catalog(self):
         result = self.collect()
-        self.assertEqual({c["category"] for c in result.commands}, {"desktop"})
+        self.assertEqual(result.commands, [])
         self.assertEqual(result.warnings, [])
+
+    def test_shortcuts_are_explicit_user_data_and_never_executed(self):
+        self.file(".config/dayzWidgets/shortcuts.json", '[{"keys":"Super + X","description":"Minha ação"}]')
+        result = self.by_name(self.collect())
+        self.assertEqual(set(result), {"Super + X"})
+        self.assertEqual(result["Super + X"]["description"], "Minha ação")
+        self.assertFalse(self.marker.exists())
+
+    def test_invalid_shortcuts_do_not_hide_other_commands(self):
+        self.file(".bashrc", "alias example='true'\n")
+        self.file(".config/dayzWidgets/shortcuts.json", '[{"keys": 12}]')
+        result = self.collect()
+        self.assertEqual(set(self.by_name(result)), {"example"})
+        self.assertEqual(len(result.warnings), 1)
 
     def test_bashrc_categories_descriptions_and_nested_declarations(self):
         self.file(".bashrc", f"""\

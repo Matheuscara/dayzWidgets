@@ -19,6 +19,8 @@ for item in entries:
         if field in manifest:
             path = (folder / manifest[field]).resolve()
             assert path.is_relative_to(folder.resolve()) and path.is_file(), path
+    if item["kind"] == "original" and "settings" in manifest:
+        assert "settings_write" in manifest.get("permissions", []), folder
     if item["kind"] == "adaptation":
         assert (folder / "NOTICE.md").is_file()
         assert len(item["upstream"]["revision"]) == 40
@@ -27,7 +29,7 @@ for path in ROOT.rglob("*"):
         continue
     if path.suffix == ".py":
         ast.parse(path.read_text())
-    if path.suffix in {".qml", ".json", ".py", ".nix", ".md", ".txt", ".yml"}:
+    if path.suffix in {".qml", ".js", ".json", ".py", ".nix", ".md", ".txt", ".yml"}:
         text = path.read_text()
         forbidden = [r"/home/" + "matheus/", r"gh" + r"[opusr]_[A-Za-z0-9]{20,}", r"-----BEGIN " + r"(?:OPENSSH|RSA|EC) PRIVATE KEY-----"]
         for pattern in forbidden:

@@ -12,7 +12,7 @@ PluginSettings {
     StringSetting {
         settingKey: "manifestPath"
         label: "Manifesto JSON"
-        description: "Opcional; padrão: manifest.json dentro da pasta das imagens"
+        description: "Opcional: caminho absoluto. Vazio descobre automaticamente imagens na pasta, sem subpastas."
         defaultValue: ""
     }
 }
