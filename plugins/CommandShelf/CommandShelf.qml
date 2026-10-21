@@ -3,10 +3,7 @@ import Quickshell.Io
 import qs.Common
 import qs.Widgets
 
-// "Meus Comandos": desktop card listing the same catalog as the `help`/`ajuda`
-// shell command. commands.py (next to this file) only reads local files and
-// prints JSON; nothing listed here is ever executed. Copy goes through
-// `dms cl copy` as argv, so the copied text is never interpreted by a shell.
+// Reads local command metadata; copy uses argv and never executes catalog entries.
 Item {
     id: root
 
@@ -306,15 +303,15 @@ Item {
         id: button
 
         property string iconName: ""
-        property int iconSize: 18
+        property int iconSize: Theme.iconSizeSmall
         property color iconColor: Theme.surfaceVariantText
         property string tooltipText: ""
         property bool spinning: false
 
         signal clicked
 
-        width: 28
-        height: 28
+        width: Theme.iconSizeSmall + Theme.spacingS
+        height: Theme.iconSizeSmall + Theme.spacingS
         radius: Theme.cornerRadius
         color: "transparent"
         activeFocusOnTab: true
@@ -376,15 +373,15 @@ Item {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.margins: root.pad
-        height: 30
+        height: Theme.iconSizeSmall + Theme.spacingM
 
         Rectangle {
             id: badge
 
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            width: 30
-            height: 30
+            width: Theme.iconSizeSmall + Theme.spacingM
+            height: Theme.iconSizeSmall + Theme.spacingM
             radius: Theme.cornerRadius
             color: Theme.withAlpha(Theme.primary, 0.18)
 
@@ -435,7 +432,7 @@ Item {
                         status += " · atualizando…";
                     else if (root.loaded && root.loadError !== "")
                         status += " · falha ao atualizar: " + root.loadError;
-                    return "help · ajuda · " + status;
+                    return status;
                 }
             }
         }
@@ -515,9 +512,9 @@ Item {
         anchors.leftMargin: root.pad
         anchors.rightMargin: root.pad
         anchors.topMargin: Theme.spacingS - 2
-        height: 26
+        height: Theme.iconSizeSmall + Theme.spacingS
         orientation: ListView.Horizontal
-        spacing: 6
+        spacing: Theme.spacingS
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         activeFocusOnTab: true
@@ -563,8 +560,8 @@ Item {
             readonly property int matches: root.matchCounts[modelData.id] ?? 0
 
             width: chipRow.implicitWidth + 18
-            height: 26
-            radius: 13
+            height: Theme.iconSizeSmall + Theme.spacingS
+            radius: Theme.cornerRadius
             color: selected ? Theme.withAlpha(Theme.primary, 0.22) : Theme.withAlpha(Theme.surfaceContainerHigh, chipArea.containsMouse ? 0.85 : 0.55)
             border.width: chips.activeFocus && ListView.isCurrentItem ? 2 : 1
             border.color: chips.activeFocus && ListView.isCurrentItem ? Theme.primary : (selected ? Theme.withAlpha(Theme.primary, 0.5) : Theme.withAlpha(Theme.outlineVariant, 0.6))
@@ -574,7 +571,7 @@ Item {
                 id: chipRow
 
                 anchors.centerIn: parent
-                spacing: 4
+                spacing: Theme.spacingXS
 
 
                 StyledText {
@@ -615,7 +612,7 @@ Item {
         anchors.topMargin: Theme.spacingS - 2
         anchors.bottomMargin: root.pad
         clip: true
-        spacing: 3
+        spacing: Theme.spacingXS
         currentIndex: -1
         activeFocusOnTab: true
         keyNavigationEnabled: false
@@ -700,10 +697,10 @@ Item {
             DankIcon {
                 id: kindIcon
 
-                x: 8
-                y: 7
+                x: Theme.spacingS
+                y: Theme.spacingS
                 name: root.kindIcons[row.modelData.kind] ?? "label"
-                size: 16
+                size: Theme.iconSizeSmall
                 color: Theme.withAlpha(Theme.primary, 0.85)
             }
 
@@ -711,11 +708,11 @@ Item {
                 id: content
 
                 anchors.left: kindIcon.right
-                anchors.leftMargin: 8
+                anchors.leftMargin: Theme.spacingS
                 anchors.right: copyButton.left
-                anchors.rightMargin: 6
+                anchors.rightMargin: Theme.spacingS
                 y: 5
-                spacing: 1
+                spacing: Theme.spacingXS / 2
 
                 StyledText {
                     width: parent.width
@@ -742,7 +739,7 @@ Item {
                 Column {
                     width: parent.width
                     visible: row.expanded
-                    spacing: 2
+                    spacing: Theme.spacingXS / 2
                     topPadding: 3
 
                     StyledText {
@@ -785,10 +782,10 @@ Item {
                 id: copyButton
 
                 anchors.right: parent.right
-                anchors.rightMargin: 4
+                anchors.rightMargin: Theme.spacingXS
                 y: 3
                 activeFocusOnTab: false
-                iconSize: 16
+                iconSize: Theme.iconSizeSmall
                 iconName: row.showFeedback ? (root.feedbackOk ? "check" : "error") : (row.copying ? "hourglass_empty" : "content_copy")
                 iconColor: row.showFeedback ? (root.feedbackOk ? Theme.success : Theme.error) : Theme.surfaceVariantText
                 tooltipText: "Copiar " + row.copyText
@@ -806,7 +803,7 @@ Item {
 
         anchors.centerIn: list
         width: list.width - Theme.spacingL * 2
-        spacing: 4
+        spacing: Theme.spacingXS
         visible: list.count === 0
 
         readonly property string mode: {
@@ -873,8 +870,8 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: emptyState.mode === "error" || emptyState.mode === "nomatch"
             width: emptyActionLabel.implicitWidth + 24
-            height: 26
-            radius: 13
+            height: Theme.iconSizeSmall + Theme.spacingS
+            radius: Theme.cornerRadius
             color: Theme.withAlpha(Theme.primary, 0.18)
             activeFocusOnTab: visible
             border.width: activeFocus ? 2 : 0
@@ -921,8 +918,8 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.pad + 4
         width: Math.min(toastIcon.width + toastRow.spacing + toastLabel.implicitWidth + 24, parent.width - root.pad * 4)
-        height: 28
-        radius: 14
+        height: Theme.iconSizeSmall + Theme.spacingS
+        radius: Theme.cornerRadius
         color: Theme.surfaceContainerHighest
         border.width: 1
         border.color: Theme.withAlpha(root.feedbackOk ? Theme.success : Theme.error, 0.6)
@@ -941,16 +938,16 @@ Item {
 
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            anchors.leftMargin: 12
+            anchors.leftMargin: Theme.spacingM
             width: parent.width - 24
-            spacing: 6
+            spacing: Theme.spacingS
 
             DankIcon {
                 id: toastIcon
 
                 anchors.verticalCenter: parent.verticalCenter
                 name: root.feedbackOk ? "check_circle" : "error"
-                size: 16
+                size: Theme.iconSizeSmall
                 color: root.feedbackOk ? Theme.success : Theme.error
             }
 

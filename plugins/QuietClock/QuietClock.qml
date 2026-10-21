@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import qs.Common
+import qs.Widgets
 import qs.Modules.Plugins
 
 DesktopPluginComponent {
@@ -24,46 +25,31 @@ DesktopPluginComponent {
 
     Column {
         anchors.left: parent.left
-        anchors.leftMargin: 22
+        anchors.leftMargin: Theme.spacingXL
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 4
+        width: root.width - Theme.spacingXL * 2 - (dial.visible ? dial.width + Theme.spacingM : 0)
+        spacing: Theme.spacingXS
 
-        Row {
-            Text {
-                text: clock.date.toLocaleTimeString(Qt.locale(), "HH")
-                font.family: SettingsData.fontFamily
-                font.pixelSize: 54
-                font.weight: Font.Light
-                color: Theme.surfaceText
-            }
-            Text {
-                text: ":"
-                font.family: SettingsData.fontFamily
-                font.pixelSize: 54
-                font.weight: Font.Light
-                color: Theme.primary
-            }
-            Text {
-                text: clock.date.toLocaleTimeString(Qt.locale(), "mm")
-                font.family: SettingsData.fontFamily
-                font.pixelSize: 54
-                font.weight: Font.Light
-                color: Theme.surfaceText
-            }
+        StyledText {
+            width: parent.width
+            text: clock.date.toLocaleTimeString(Qt.locale(), SettingsData.use24HourClock ? "HH:mm" : "h:mm AP")
+            font.pixelSize: Math.min(Theme.fontSizeXLarge * 2.7, width / Math.max(1, text.length) * 1.5)
+            font.weight: Font.Light
+            color: Theme.surfaceText
         }
-
-        Text {
-            text: clock.date.toLocaleDateString(Qt.locale("pt_BR"), "dddd, d 'de' MMMM")
-            font.family: SettingsData.fontFamily
-            font.pixelSize: 12
+        StyledText {
+            width: parent.width
+            text: clock.date.toLocaleDateString()
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.surfaceVariantText
+            elide: Text.ElideRight
         }
     }
 
     Canvas {
         id: dial
         anchors.right: parent.right
-        anchors.rightMargin: 24
+        anchors.rightMargin: Theme.spacingXL
         anchors.verticalCenter: parent.verticalCenter
         width: 64
         height: 64

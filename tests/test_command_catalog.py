@@ -72,9 +72,9 @@ alias -- dashed='ls -l' second="echo 2"
         commands = self.by_name(self.collect())
         self.assertNotIn("inner", commands)
         self.assertNotIn("helper", commands)
-        self.assertEqual(commands["nixrebuild"]["category"], "nix")
+        self.assertEqual(commands["nixrebuild"]["category"], "system")
         self.assertEqual(commands["nixrebuild"]["description"], "Aplica a config")
-        self.assertEqual(commands["nixup"]["category"], "nix")
+        self.assertEqual(commands["nixup"]["category"], "system")
         self.assertEqual(commands["nixup"]["detail"], "sudo nixos-rebuild switch --upgrade")
         self.assertEqual(commands["ghwho"]["category"], "shell")
         self.assertIn("$(touch", commands["ghwho"]["detail"])
@@ -109,7 +109,7 @@ alias -- dashed='ls -l' second="echo 2"
     def test_system_aliases_go_to_nix_without_functions(self):
         self.etc_bashrc.write_text("alias -- l='ls -alh'\nsysfn() { echo x; }\n")
         commands = self.by_name(self.collect())
-        self.assertEqual(commands["l"]["category"], "nix")
+        self.assertEqual(commands["l"]["category"], "system")
         self.assertEqual(commands["l"]["kind"], "system-alias")
         self.assertNotIn("sysfn", commands)
 

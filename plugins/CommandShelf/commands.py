@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Catálogo dos meus comandos (fonte única do `ajuda` e do widget CommandShelf).
+"""Catálogo local de comandos para CommandShelf.
 
 Só LÊ arquivos e serializa metadados: nunca executa, faz `source` nem expande
 nada dos arquivos lidos, e não acessa rede.
@@ -8,7 +8,7 @@ Uso:
   commands.py [--json | --tsv] [--home DIR] [--etc-bashrc FILE]
 
 --json (padrão): {"version":1,"categories":[...],"commands":[...],"warnings":[...]}
---tsv: 5 colunas pro renderizador do `ajuda`:
+--tsv: 5 colunas para saída de terminal:
        categoria(1-5) <TAB> ícone <TAB> nome <TAB> detalhe <TAB> descrição
 """
 
@@ -25,11 +25,11 @@ VERSION = 1
 CATEGORIES = [
     {"id": "shell", "title": "Shell", "icon": "terminal"},
     {"id": "scripts", "title": "Scripts", "icon": "code"},
-    {"id": "nix", "title": "NixOS", "icon": "deployed_code"},
+    {"id": "system", "title": "Sistema", "icon": "deployed_code"},
     {"id": "ssh", "title": "SSH", "icon": "dns"},
     {"id": "desktop", "title": "Atalhos", "icon": "keyboard"},
 ]
-TSV_SECTION = {"shell": "1", "scripts": "2", "nix": "3", "ssh": "4", "desktop": "5"}
+TSV_SECTION = {"shell": "1", "scripts": "2", "system": "3", "ssh": "4", "desktop": "5"}
 
 # Nerd Font glyphs do renderizador do `ajuda` (só vão no TSV).
 GLYPH_FUNCTION = "\U000f0295"
@@ -156,7 +156,7 @@ def parse_bashrc(text, source, catalog, *, category_for, alias_kind="alias", fun
 
 
 def bashrc_category(name):
-    return "nix" if name.startswith("nix") else "shell"
+    return "system" if name.startswith("nix") else "shell"
 
 
 def scan_scripts(directory, catalog, home):
@@ -299,7 +299,7 @@ def collect(home=None, etc_bashrc="/etc/bashrc", shortcuts_file=None):
 
     text = read_text(etc_bashrc, catalog, home)
     if text is not None:
-        parse_bashrc(text, str(etc_bashrc), catalog, category_for=lambda _: "nix",
+        parse_bashrc(text, str(etc_bashrc), catalog, category_for=lambda _: "system",
                      alias_kind="system-alias", functions=False)
 
     ssh_config = home / ".ssh" / "config"
@@ -335,7 +335,7 @@ def to_tsv(catalog):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Catálogo dos meus comandos (só leitura).")
+    parser = argparse.ArgumentParser(description="Catálogo local de comandos (só leitura).")
     fmt = parser.add_mutually_exclusive_group()
     fmt.add_argument("--json", dest="format", action="store_const", const="json")
     fmt.add_argument("--tsv", dest="format", action="store_const", const="tsv")

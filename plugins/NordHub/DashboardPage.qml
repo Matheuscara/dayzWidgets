@@ -5,7 +5,6 @@ import Quickshell.Services.Mpris
 import qs.Common
 import qs.Services
 import qs.Widgets
-import qs.Modules.DankDash.Overview as Overview
 
 Item {
     id: page
@@ -84,7 +83,7 @@ Item {
     }
 
     // ---------------------------------------------------------------- media
-    Overview.Card {
+    HubCard {
         id: mediaCard
 
         x: 0
@@ -260,7 +259,7 @@ Item {
     }
 
     // ------------------------------------------------------------ launchers
-    Overview.Card {
+    HubCard {
         id: launcherCard
 
         x: 0
@@ -334,7 +333,7 @@ Item {
     }
 
     // ------------------------------------------------------- clock + weather
-    Overview.Card {
+    HubCard {
         id: clockCard
 
         x: page.leftWidth + page.gap
@@ -363,7 +362,7 @@ Item {
         }
     }
 
-    Overview.Card {
+    HubCard {
         id: weatherCard
 
         x: clockCard.x + clockCard.width + page.gap
@@ -452,17 +451,16 @@ Item {
     }
 
     // ------------------------------------------------------------- calendar
-    Overview.CalendarOverviewCard {
+    HubCalendar {
         x: clockCard.x
         y: clockCard.height + page.gap
         width: page.centerWidth
         height: page.height - y
 
-        onCloseDash: page.requestClose()
     }
 
     // ------------------------------------------------- levels + shell access
-    Overview.Card {
+    HubCard {
         id: controlsCard
 
         x: page.width - page.rightWidth

@@ -2,7 +2,7 @@
   "id": "nordHub",
   "name": "Nord Hub",
   "description": "Central configurável de ferramentas nativas, desempenho e clima; sem alterar a barra",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Matheuscara",
   "type": "widget",
   "capabilities": [

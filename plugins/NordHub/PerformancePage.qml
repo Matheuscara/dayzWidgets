@@ -2,7 +2,6 @@ import QtQuick
 import qs.Common
 import qs.Services
 import qs.Widgets
-import qs.Modules.DankDash.Overview as Overview
 
 Item {
     id: page
@@ -139,7 +138,7 @@ Item {
             revision: page.sample
         }
 
-        Overview.Card {
+        HubCard {
             x: 0
             y: (page.cardHeight + page.gap) * 2
             width: page.width

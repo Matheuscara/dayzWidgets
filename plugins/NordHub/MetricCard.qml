@@ -1,9 +1,8 @@
 import QtQuick
 import qs.Common
 import qs.Widgets
-import qs.Modules.DankDash.Overview as Overview
 
-Overview.Card {
+HubCard {
     id: root
 
     property string iconName: ""

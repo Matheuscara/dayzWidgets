@@ -1,5 +1,12 @@
 # Changelog
 
+## Segunda revisão do catálogo — 20-10-2026
+
+- Hub independente dos módulos privados DankDash/DDash: cartões locais, calendário mensal e clima atual via WeatherService.
+- Relógio respeita idioma e formato 12/24 h; retirado do cadastro por sobreposição, disponível no repositório.
+- Categoria Sistema e status genérico no CommandShelf; controles seguem os tokens do tema.
+- Primeiro lote reduzido a quatro plugins após retorno automático; texto do autor preservado.
+
 ## Portabilidade — 20-10-2026
 
 - Hub com ferramentas configuráveis, funções nativas por padrão e sem injetar fundos na barra.

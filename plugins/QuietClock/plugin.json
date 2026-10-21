@@ -2,7 +2,7 @@
   "id": "quietClock",
   "name": "Relógio",
   "description": "Relógio de desktop com tipografia e superfície consistentes",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "author": "Matheuscara",
   "type": "desktop",
   "capabilities": [

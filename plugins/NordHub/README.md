@@ -7,6 +7,14 @@ Habilite `nordHub` e adicione-o à barra. O painel abre no centro do monitor.
 `dgop` fornece as métricas; quando ausente, a página informa a indisponibilidade.
 O Hub não altera o fundo nem a composição da barra.
 
+O painel reúne mídia MPRIS, calendário mensal, volume/brilho e acessos ao controle
+central, notificações e energia. O diferencial é a aba pesquisável de ferramentas
+configuradas pelo usuário, junto de métricas em uma única janela. Se precisar
+somente desses controles nativos, o dash do DMS já os oferece.
+Os cartões, calendário e visão de clima são componentes locais: não importam
+módulos privados DankDash/DDash. O calendário é mensal, sem integração de eventos;
+a visão de clima mostra condições atuais usando WeatherService.
+
 Em **Configurações → Plugins → Nord Hub**, configure o executável do terminal
 (opcional), a exibição do clima e `toolsJson`. Vazio usa apenas notas, atalhos e
 configurações nativas. `[]` remove todas as ferramentas. JSON inválido apresenta

@@ -1,11 +1,23 @@
 import QtQuick
 import QtTest
+import "../../plugins/NordHub/CalendarData.js" as Calendar
 import "../../plugins/NordHub/HubConfig.js" as Hub
 import "../../plugins/QuickShortcuts/ShortcutConfig.js" as Shortcuts
 import "../../plugins/AnimeGallery/GalleryData.js" as Gallery
 
 TestCase {
     name: "PortableConfiguration"
+
+    function test_calendar_handles_leap_years_and_local_week_start() {
+        const monday = Calendar.cells(2028, 1, 1);
+        compare(monday.length, 42);
+        compare(monday[0].getDay(), 1);
+        compare(monday[0].getMonth(), 0);
+        verify(monday.some(date => date.getMonth() === 1 && date.getDate() === 29));
+        const sunday = Calendar.cells(2027, 0, 7);
+        compare(sunday[0].getDay(), 0);
+        verify(sunday.every(date => !isNaN(date.getTime())));
+    }
 
     function test_native_defaults_have_no_personal_instances() {
         const config = Hub.readTools({});
