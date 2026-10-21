@@ -1,5 +1,12 @@
 # Changelog
 
+## Envio pronto para revisão humana — 20-10-2026
+
+- Revisão automática passou a `ready`, sem bloqueios; decisão de inclusão continua com os mantenedores.
+- Hub substitui o atalho de keybinds dependente de provider pelo gerenciamento de plugins nativo.
+- Ícones dos atalhos seguem escala e espessura da barra; galeria renomeada para Galeria de imagens.
+- Diferencial em relação ao Media Frame documentado; compositor Niri mantido por ser o ambiente efetivamente testado.
+
 ## Segunda revisão do catálogo — 20-10-2026
 
 - Hub independente dos módulos privados DankDash/DDash: cartões locais, calendário mensal e clima atual via WeatherService.

@@ -1,8 +1,8 @@
 {
   "id": "animeGallery",
-  "name": "Galeria Anime",
+  "name": "Galeria de imagens",
   "description": "Quadro de wallpapers locais; clique para avançar e abra a coleção pelo botão",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Matheuscara",
   "type": "desktop",
   "capabilities": [

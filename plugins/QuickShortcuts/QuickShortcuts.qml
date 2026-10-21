@@ -29,8 +29,8 @@ PluginComponent {
             spacing: Theme.spacingXS
             DankActionButton {
                 visible: root.configuration.error !== ""
-                buttonSize: 28
-                iconSize: 18
+                buttonSize: root.iconSize + Theme.spacingS
+                iconSize: root.iconSize
                 iconName: "error_outline"
                 iconColor: Theme.warning
                 tooltipText: root.configuration.error
@@ -41,8 +41,8 @@ PluginComponent {
                 DankActionButton {
                     required property var modelData
                     required property int index
-                    buttonSize: 28
-                    iconSize: 17
+                    buttonSize: root.iconSize + Theme.spacingS
+                    iconSize: root.iconSize
                     iconName: modelData.icon
                     iconColor: Theme.widgetIconColor
                     tooltipText: modelData.name
@@ -58,8 +58,8 @@ PluginComponent {
             spacing: Theme.spacingXS
             DankActionButton {
                 visible: root.configuration.error !== ""
-                buttonSize: 28
-                iconSize: 18
+                buttonSize: root.iconSize + Theme.spacingS
+                iconSize: root.iconSize
                 iconName: "error_outline"
                 iconColor: Theme.warning
                 tooltipText: root.configuration.error
@@ -69,8 +69,8 @@ PluginComponent {
                 model: root.shortcuts
                 DankActionButton {
                     required property var modelData
-                    buttonSize: 28
-                    iconSize: 18
+                    buttonSize: root.iconSize + Theme.spacingS
+                    iconSize: root.iconSize
                     iconName: modelData.icon
                     iconColor: Theme.widgetIconColor
                     tooltipText: modelData.name

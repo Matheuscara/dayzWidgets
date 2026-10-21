@@ -9,7 +9,7 @@ function argv(value) {
 function defaults() {
     return [
         {name: "Notas rápidas", desc: "Bloco de notas do DMS", icon: "edit_note", category: "util", kind: "native", ipc: ["notepad", "toggle"]},
-        {name: "Atalhos", desc: "Consultar atalhos do DMS", icon: "keyboard", category: "util", kind: "native", ipc: ["keybinds", "toggle"]},
+        {name: "Plugins", desc: "Configurar plugins do DMS", icon: "extension", category: "system", kind: "native", ipc: ["settings", "openWith", "plugins"]},
         {name: "Configurações", desc: "Preferências do DMS", icon: "settings", category: "system", kind: "native", ipc: ["settings", "open"]}
     ];
 }

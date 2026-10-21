@@ -37,7 +37,7 @@
     {
       "directory": "AnimeGallery",
       "id": "animeGallery",
-      "name": "Galeria Anime",
+      "name": "Galeria de imagens",
       "type": "desktop",
       "kind": "original",
       "license": "MIT"

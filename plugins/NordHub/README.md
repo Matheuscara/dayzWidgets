@@ -16,7 +16,7 @@ módulos privados DankDash/DDash. O calendário é mensal, sem integração de e
 a visão de clima mostra condições atuais usando WeatherService.
 
 Em **Configurações → Plugins → Nord Hub**, configure o executável do terminal
-(opcional), a exibição do clima e `toolsJson`. Vazio usa apenas notas, atalhos e
+(opcional), a exibição do clima e `toolsJson`. Vazio usa apenas notas, gerenciamento de plugins e
 configurações nativas. `[]` remove todas as ferramentas. JSON inválido apresenta
 um erro e não dispara ações. Também é possível fornecer a lista `tools` diretamente
 nas configurações declarativas do plugin.

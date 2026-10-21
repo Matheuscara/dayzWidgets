@@ -1,4 +1,4 @@
-# Galeria Anime
+# Galeria de imagens
 
 Widget `animeGallery` para DankMaterialShell 1.4.6. Licença MIT, autoria Matheuscara.
 Testado com Niri. Imagens são fornecidas pelo usuário; não há download ou coleção inclusa.
@@ -21,3 +21,9 @@ Configuração global fica no painel do plugin; instâncias podem usar `config.d
 e `config.manifestPath` nas preferências do desktop.
 
 [Configuração completa](https://github.com/Matheuscara/dayzWidgets/blob/main/docs/CONFIGURATION.md).
+
+O catálogo também oferece [Media Frame](https://codeberg.org/claymorwan/dms-plugins/src/branch/master/mediaFrame),
+voltado à exibição de uma imagem. Esta variante tem como foco navegar por uma
+coleção local com descoberta da pasta, avanço por clique e ordem/metadados por
+manifesto opcional. Mantém o ID `animeGallery` por compatibilidade, mas aceita
+qualquer tema de imagens e não fornece conteúdo de anime.

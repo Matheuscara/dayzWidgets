@@ -24,6 +24,7 @@ TestCase {
         compare(config.error, "");
         compare(config.items.length, 3);
         verify(config.items.every(tool => tool.kind === "native" && !tool.target));
+        verify(config.items.every(tool => tool.ipc[0] !== "keybinds"));
     }
 
     function test_custom_instance_ids_and_argv_are_preserved() {

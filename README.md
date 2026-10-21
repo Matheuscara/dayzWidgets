@@ -109,6 +109,7 @@ duas cópias ativas do mesmo ID.
 
 O pedido inicial de sete plugins foi [enviado para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
 Após a revisão automática, o primeiro lote foi reduzido a quatro plugins e corrigido.
+A [última revisão automática](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063#issuecomment-6305964878) marcou o envio como **ready**, com observações menores tratadas no código.
 O player fica em um lote separado; o relógio foi retirado por sobreposição com
 outros relógios e BitwardenBar por depender de um fork. A descrição foi substituída pelo texto do autor e o pedido
 está novamente pronto para revisão.

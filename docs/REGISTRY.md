@@ -31,3 +31,11 @@ locais, mantendo WeatherService para os dados. QuietClock recebeu correções de
 locale, 12/24 horas e tokens, mas foi removido do cadastro por sobreposição.
 CommandShelf usa a categoria genérica Sistema e não se refere a comandos de ajuda
 particulares. O texto do autor permanece no PR, sem reescrita.
+
+A [terceira revisão automática](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063#issuecomment-6305964878)
+marcou o pedido como **ready**, sem bloqueios. As observações menores resultaram
+em um botão nativo de plugins no lugar de keybinds sem provider, ícones da barra
+escaláveis e nome genérico da galeria. A comparação com Media Frame foi documentada.
+A lista de compositores continua restrita a Niri porque esse foi o ambiente testado;
+o código não é deliberadamente limitado a ele. Aprovação humana e inclusão no site
+continuam pendentes.
