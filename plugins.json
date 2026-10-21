@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "testedDms": "1.4.6",
+  "plugins": [
+    {
+      "directory": "QuietClock",
+      "id": "quietClock",
+      "name": "Relógio",
+      "type": "desktop",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "NordMediaCard",
+      "id": "nordMediaCard",
+      "name": "Nord Media Card",
+      "type": "desktop",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "NordHub",
+      "id": "nordHub",
+      "name": "Nord Hub",
+      "type": "widget",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "QuickShortcuts",
+      "id": "quickShortcuts",
+      "name": "Atalhos rápidos",
+      "type": "widget",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "AnimeGallery",
+      "id": "animeGallery",
+      "name": "Galeria Anime",
+      "type": "desktop",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "CommandShelf",
+      "id": "commandShelf",
+      "name": "Meus Comandos",
+      "type": "desktop",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "BitwardenBar",
+      "id": "bitwardenBar",
+      "name": "Bitwarden · Acesso na barra",
+      "type": "widget",
+      "kind": "original",
+      "license": "MIT"
+    },
+    {
+      "directory": "weatherArt",
+      "id": "weatherArt",
+      "name": "Clima",
+      "type": "desktop",
+      "kind": "adaptation",
+      "license": "MIT",
+      "upstream": {
+        "repository": "https://github.com/viewerofall-labs/weather-viewer",
+        "revision": "1892857e462be9b830582d891e989a61fe194d75",
+        "license": "MIT",
+        "localPatches": [
+          "Compact matte weather card using the existing WeatherService; scene renderer retained in source"
+        ]
+      }
+    },
+    {
+      "directory": "theGrove",
+      "id": "theGrove",
+      "name": "theGrove",
+      "type": "desktop",
+      "kind": "adaptation",
+      "license": "MIT",
+      "upstream": {
+        "repository": "https://github.com/viewerofall-labs/weather-viewer",
+        "revision": "1892857e462be9b830582d891e989a61fe194d75",
+        "license": "MIT",
+        "localPatches": [
+          "Compact horizontal layout, opaque shared surface, Portuguese status labels",
+          "Organic botanical Canvas illustration across six stages, pot, growth labels and explicit watering status",
+          "Translucent surface, pointer-only leaf feedback and animation-disable support"
+        ]
+      }
+    },
+    {
+      "directory": "DesktopCountdown",
+      "id": "dmsDesktopCountdown",
+      "name": "DMS Desktop Countdown",
+      "type": "desktop",
+      "kind": "adaptation",
+      "license": "GPL-3.0",
+      "upstream": {
+        "repository": "https://github.com/nfoert/dms-desktop-countdown",
+        "revision": "cd0c9fb65aad4b8a72502369a60e2a6fbeacba4e",
+        "license": "GPL-3.0",
+        "localPatches": [
+          "Portuguese event cards with per-instance local photos, readable scrim, icons, subtitles and explicit dates",
+          "Calendar-day countdown with Today/Ended states; validated date parsing and bounded date filters",
+          "Per-instance image dim amount; generated visa-document background asset",
+          "Subtle frame and pointer-only photo zoom respecting native animation setting"
+        ]
+      }
+    },
+    {
+      "directory": "DankAlbumWidget",
+      "id": "dankAlbumWidget",
+      "name": "Dank Album Widget",
+      "type": "desktop",
+      "kind": "adaptation",
+      "license": "MIT",
+      "upstream": {
+        "repository": "https://github.com/kmf/dank-album-widget",
+        "revision": "433d85bf6309e155f23c626590bf1f3f579d2770",
+        "license": "MIT",
+        "localPatches": [
+          "DMS 1.4.6 native MPRIS/art APIs and shared Graphite accent"
+        ]
+      }
+    },
+    {
+      "directory": "DankTodo",
+      "id": "dankTodo",
+      "name": "Dank Todo",
+      "type": "widget",
+      "kind": "adaptation",
+      "license": "MIT",
+      "upstream": {
+        "repository": "https://github.com/deepu105/dms-dank-todo",
+        "revision": "ff1b82c3061fce3c32c8f65792fa81b928ab35d1",
+        "license": "MIT",
+        "localPatches": [
+          "DMS 1.4.6 primary text token; optional hidden bar host",
+          "Per-monitor IPC targets avoid duplicate handler registrations"
+        ]
+      }
+    }
+  ]
+}

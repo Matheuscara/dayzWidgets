@@ -1,0 +1,22 @@
+{
+  "id": "weatherArt",
+  "name": "Clima",
+  "description": "dayzWidgets edition · Dynamic weather art widget",
+  "version": "0.1.0-dayz.1",
+  "author": "viewerofall",
+  "type": "desktop",
+  "capabilities": [
+    "desktop-widget"
+  ],
+  "component": "./WeatherCard.qml",
+  "icon": "cloud",
+  "requires_dms": ">=1.4.6",
+  "permissions": [
+    "settings_read",
+    "settings_write"
+  ],
+  "repo": "viewerofall-labs/weather-viewer/weatherArt",
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT",
+  "maintainer": "Matheuscara"
+}

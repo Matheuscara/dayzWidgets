@@ -1,0 +1,16 @@
+{
+  "id": "bitwardenBar",
+  "name": "Bitwarden · Acesso na barra",
+  "description": "Acesso compacto ao mesmo cofre Bitwarden, sem outra sessão ou serviço",
+  "version": "1.0.0",
+  "author": "Matheuscara",
+  "license": "MIT",
+  "type": "widget",
+  "capabilities": [
+    "dankbar-widget"
+  ],
+  "component": "./BitwardenBar.qml",
+  "icon": "shield_lock",
+  "requires_dms": ">=1.4.6",
+  "homepage": "https://github.com/Matheuscara/dayzWidgets"
+}

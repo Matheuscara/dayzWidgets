@@ -1,0 +1,22 @@
+{
+  "id": "nordHub",
+  "name": "Nord Hub",
+  "description": "Central menu (dashboard, desempenho, clima) and the floating island backdrops for DankBar sections",
+  "version": "1.0.0",
+  "author": "Matheuscara",
+  "type": "widget",
+  "capabilities": [
+    "dankbar-widget"
+  ],
+  "component": "./NordHub.qml",
+  "icon": "space_dashboard",
+  "requires_dms": ">=1.4.6",
+  "requires": [
+    "dgop"
+  ],
+  "permissions": [
+    "settings_read"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT"
+}

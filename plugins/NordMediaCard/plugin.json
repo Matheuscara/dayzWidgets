@@ -1,0 +1,20 @@
+{
+  "id": "nordMediaCard",
+  "name": "Nord Media Card",
+  "description": "Material-style desktop media card (MPRIS) on the bottom layer, behind windows",
+  "version": "1.0.0",
+  "author": "Matheuscara",
+  "type": "desktop",
+  "capabilities": [
+    "desktop-widget",
+    "media"
+  ],
+  "component": "./NordMediaCard.qml",
+  "icon": "album",
+  "requires_dms": ">=1.4.6",
+  "permissions": [
+    "settings_read"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT"
+}

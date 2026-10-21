@@ -1,0 +1,19 @@
+{
+  "id": "quietClock",
+  "name": "Relógio",
+  "description": "Relógio de desktop com tipografia e superfície consistentes",
+  "version": "1.0.0",
+  "author": "Matheuscara",
+  "type": "desktop",
+  "capabilities": [
+    "desktop-widget"
+  ],
+  "component": "./QuietClock.qml",
+  "icon": "schedule",
+  "requires_dms": ">=1.4.6",
+  "permissions": [
+    "settings_read"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dankTodo",
+  "name": "Dank Todo",
+  "description": "dayzWidgets edition · A simple locally-saved TODO list widget for the Dank bar",
+  "version": "1.2.0-dayz.1",
+  "license": "MIT",
+  "author": "Deepu K Sasidharan",
+  "icon": "checklist",
+  "type": "widget",
+  "category": "productivity",
+  "component": "./DankTodoWidget.qml",
+  "settings": "./DankTodoSettings.qml",
+  "capabilities": [
+    "dankbar-widget"
+  ],
+  "compositors": [
+    "any"
+  ],
+  "distro": [
+    "any"
+  ],
+  "dependencies": [],
+  "permissions": [
+    "settings_read",
+    "settings_write"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "requires_dms": ">=1.4.6",
+  "maintainer": "Matheuscara"
+}

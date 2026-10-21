@@ -1,0 +1,25 @@
+{
+  "id": "dankAlbumWidget",
+  "name": "Dank Album Widget",
+  "description": "dayzWidgets edition · Square album-cover desktop widget with Material play, previous, and next over MPRIS",
+  "version": "1.2.0-dayz.1",
+  "license": "MIT",
+  "author": "kmf",
+  "icon": "album",
+  "type": "desktop",
+  "capabilities": [
+    "desktop-widget",
+    "mpris",
+    "media"
+  ],
+  "component": "./DankAlbumWidget.qml",
+  "settings": "./DankAlbumWidgetSettings.qml",
+  "requires_dms": ">=1.4.6",
+  "permissions": [
+    "settings_read",
+    "settings_write"
+  ],
+  "screenshot": "https://raw.githubusercontent.com/kmf/dank-album-widget/main/screenshot.jpg",
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "maintainer": "Matheuscara"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "theGrove",
+  "name": "theGrove",
+  "description": "dayzWidgets edition · A living tree on your desktop that grows as long as DankMaterialShell does",
+  "version": "1.0.0-dayz.1",
+  "author": "viewerofall",
+  "type": "desktop",
+  "capabilities": [
+    "desktop-widget",
+    "ambient"
+  ],
+  "component": "./GroveWidget.qml",
+  "icon": "park",
+  "settings": "./GroveSettings.qml",
+  "requires_dms": ">=1.4.6",
+  "requires": [
+    "notify-send"
+  ],
+  "permissions": [
+    "settings_read",
+    "settings_write",
+    "process"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT",
+  "maintainer": "Matheuscara"
+}

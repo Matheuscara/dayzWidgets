@@ -1,0 +1,11 @@
+{
+  "label": "Próximo evento",
+  "subtitle": "Preparar documentos",
+  "endDate": "2027-01-01",
+  "startDate": "",
+  "eventIcon": "description",
+  "deadline": true,
+  "dateCaption": "Prazo",
+  "imageDimAmount": 0.62,
+  "showDays": true
+}

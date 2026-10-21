@@ -1,0 +1,20 @@
+{
+  "id": "quickShortcuts",
+  "name": "Atalhos rápidos",
+  "description": "Aplicativos e ferramentas frequentes com acesso direto na barra",
+  "version": "1.0.0",
+  "author": "Matheuscara",
+  "type": "widget",
+  "capabilities": [
+    "dankbar-widget"
+  ],
+  "component": "./QuickShortcuts.qml",
+  "icon": "bolt",
+  "requires_dms": ">=1.4.6",
+  "permissions": [
+    "settings_read"
+  ],
+  "homepage": "https://github.com/Matheuscara/dayzWidgets",
+  "license": "MIT",
+  "settings": "./ShortcutsSettings.qml"
+}

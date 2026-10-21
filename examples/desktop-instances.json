@@ -1,0 +1,68 @@
+{
+  "desktopWidgetInstances": [
+    {
+      "id": "dayz_clock",
+      "widgetType": "quietClock",
+      "name": "dayz_clock",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_media",
+      "widgetType": "nordMediaCard",
+      "name": "dayz_media",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_weather",
+      "widgetType": "weatherArt",
+      "name": "dayz_weather",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_grove",
+      "widgetType": "theGrove",
+      "name": "dayz_grove",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_gallery",
+      "widgetType": "animeGallery",
+      "name": "dayz_gallery",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_countdown",
+      "widgetType": "dmsDesktopCountdown",
+      "name": "dayz_countdown",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_album",
+      "widgetType": "dankAlbumWidget",
+      "name": "dayz_album",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    },
+    {
+      "id": "dayz_commands",
+      "widgetType": "commandShelf",
+      "name": "dayz_commands",
+      "enabled": true,
+      "config": {},
+      "positions": {}
+    }
+  ]
+}
