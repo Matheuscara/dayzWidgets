@@ -51,3 +51,9 @@
 - Instalador por links com prévia, proteção de instalações existentes e backups.
 - Exemplos genéricos, documentação de configuração e módulo NixOS.
 - Testes isolados do instalador e do catálogo de comandos; checks em CI.
+
+## 2026-10-21 — distribuição Nix independente
+
+- Dayz Wallpapers publicado também em `Matheuscara/dayzWallpapers`, com instalação
+  por `nix run`, Python empacotado, backup e raiz de garbage collection.
+- Documentadas as alternativas NixOS/Home Manager e a prevenção de instalações duplicadas.

@@ -192,3 +192,14 @@ são bem-vindos com versão e logs sem dados sensíveis.
 
 Código autoral: [MIT](LICENSE). Cada adaptação mantém sua própria licença;
 **DesktopCountdown é GPL-3.0**, não MIT. Veja [THIRD_PARTY.md](THIRD_PARTY.md).
+
+### Instalar somente o seletor de wallpapers
+
+[Dayz Wallpapers tem um repositório próprio](https://github.com/Matheuscara/dayzWallpapers),
+com Python incluído e módulos NixOS/Home Manager. Com DMS 1.4.6+ instalado:
+
+```bash
+nix run github:Matheuscara/dayzWallpapers
+```
+
+Não mantenha outra instalação do mesmo plugin ao usar esse comando.

@@ -33,3 +33,15 @@ suas licenças. Dependências opcionais continuam sob controle da sua configura�
 O módulo é um ponto de integração com o módulo do DMS, não uma instalação completa
 de Niri/Quickshell. Parse Nix e estrutura são verificados localmente; este repositório
 não testa um nixos-rebuild completo para todas as versões de Nixpkgs/DMS.
+
+## Apenas o seletor de wallpapers
+
+Para instalar Dayz Wallpapers sem clonar a coleção nem fazer rebuild:
+
+```bash
+nix run github:Matheuscara/dayzWallpapers
+```
+
+O [repositório próprio](https://github.com/Matheuscara/dayzWallpapers) inclui Python
+no pacote e oferece módulos NixOS e Home Manager. Não combine as duas instalações
+do mesmo plugin. A instalação do DMS é pré-requisito.

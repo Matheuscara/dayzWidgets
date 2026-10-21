@@ -5,6 +5,19 @@ Matheuscara. Código original MIT, sem incorporar o código do Wallpaper Carouse
 O carrossel inclinado é uma referência de interação; este plugin tem implementação
 própria, categorias por pasta e agendamento persistente. Requer Python 3.
 
+## Instalação Nix em um comando
+
+O plugin também tem um repositório próprio, com Python incluído, instalador
+e módulos NixOS/Home Manager:
+[Matheuscara/dayzWallpapers](https://github.com/Matheuscara/dayzWallpapers).
+
+```bash
+nix run github:Matheuscara/dayzWallpapers
+```
+
+Requer DMS 1.4.6+ instalado. Escolha uma única origem de instalação para evitar
+duplicar o ID entre a coleção e o pacote independente.
+
 ## Usar
 
 Instale a pasta, habilite `dayzWallpapers` e abra:
