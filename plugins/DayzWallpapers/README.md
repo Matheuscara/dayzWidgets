@@ -18,6 +18,8 @@ nix run github:Matheuscara/dayzWallpapers
 Requer DMS 1.4.6+ instalado. Escolha uma única origem de instalação para evitar
 duplicar o ID entre a coleção e o pacote independente.
 
+Na interface e na lista de plugins, o nome exibido é **Wallpapers**.
+
 ## Usar
 
 Instale a pasta, habilite `dayzWallpapers` e abra:

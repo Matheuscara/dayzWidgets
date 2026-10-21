@@ -57,3 +57,5 @@
 - Dayz Wallpapers publicado também em `Matheuscara/dayzWallpapers`, com instalação
   por `nix run`, Python empacotado, backup e raiz de garbage collection.
 - Documentadas as alternativas NixOS/Home Manager e a prevenção de instalações duplicadas.
+
+- Interface do seletor e lista de plugins passam a exibir apenas **Wallpapers**; ID e atalhos preservados.

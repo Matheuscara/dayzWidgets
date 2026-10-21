@@ -147,7 +147,7 @@
     {
       "directory": "DayzWallpapers",
       "id": "dayzWallpapers",
-      "name": "Dayz Wallpapers",
+      "name": "Wallpapers",
       "type": "daemon",
       "kind": "original",
       "license": "MIT"
