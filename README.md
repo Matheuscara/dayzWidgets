@@ -110,7 +110,8 @@ duas cópias ativas do mesmo ID.
 O pedido inicial de sete plugins foi [enviado para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
 Após a revisão automática, o primeiro lote foi reduzido a cinco plugins e corrigido.
 O player fica em um lote separado; BitwardenBar foi retirado desse cadastro por
-depender de um fork. O pedido permanece em rascunho até a descrição escrita pelo autor.
+depender de um fork. A descrição foi substituída pelo texto do autor e o pedido
+está novamente pronto para revisão.
 A inclusão depende da aprovação dos mantenedores; enquanto isso, instale pelo repositório.
 As cinco adaptações permanecem disponíveis aqui, com os créditos e IDs de origem.
 

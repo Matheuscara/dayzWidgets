@@ -7,7 +7,9 @@
 - CommandShelf lê atalhos opcionais do usuário; nenhuma combinação do compositor é presumida.
 - QuickShortcuts configurável nas duas orientações e sem plugins extras por padrão; permissões de gravação corrigidas.
 - Player com tokens nativos do tema; documentação de diferenças e dependência específica do Bitwarden.
-- Testes Qt para JSON inválido, argumentos, IDs de instância e caminhos de imagem.
+- Testes Qt para JSON inválido, argumentos, IDs de instância e caminhos de imagem; CI Python e Qt aprovados.
+- PR #1063 atualizado com cinco entradas e descrição fornecida pelo autor; nova revisão solicitada.
+- Player separado em branch própria do fork do registro; BitwardenBar fora do cadastro.
 
 ## Envio ao catálogo — 20-10-2026
 
