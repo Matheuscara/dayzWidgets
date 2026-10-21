@@ -2,6 +2,7 @@
 
 ## README visual — 20-10-2026
 
+- Prévias das cinco adaptações, incluindo árvore e contagem regressiva, com créditos e dados fictícios.
 - Grade de duas colunas com oito prévias ilustrativas da coleção autoral e tema.
 - Dados fictícios e render reproduzível com Chromium + ImageMagick, sem usar a sessão pessoal.
 

@@ -68,13 +68,42 @@ licenças, revisão de origem e descrição das mudanças em `NOTICE.md` e `plug
 Os IDs originais são preservados; substitua a instalação upstream em vez de manter
 duas cópias ativas do mesmo ID.
 
-| Plugin | Origem | Licença | Acabamento desta edição |
-|---|---|---|---|
-| [weatherArt](plugins/weatherArt) | [viewerofall-labs](https://github.com/viewerofall-labs/weather-viewer) | MIT | Cartão compacto para o clima nativo do DMS |
-| [theGrove](plugins/theGrove) | [viewerofall-labs](https://github.com/viewerofall-labs/weather-viewer) | MIT | Planta vetorial, vaso, crescimento e próxima rega |
-| [DesktopCountdown](plugins/DesktopCountdown) | [nfoert](https://github.com/nfoert/dms-desktop-countdown) | GPL-3.0 | Eventos com foto, ícone, subtítulo e dias de calendário |
-| [DankAlbumWidget](plugins/DankAlbumWidget) | [kmf](https://github.com/kmf/dank-album-widget) | MIT | Capa quadrada e compatibilidade com DMS 1.4.6 |
-| [DankTodo](plugins/DankTodo) | [deepu105](https://github.com/deepu105/dms-dank-todo) | MIT | Tarefas locais, host opcionalmente oculto e IPC por monitor |
+<p>Prévias ilustrativas com dados fictícios.</p>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/theGrove"><img src="docs/previews/grove.png" alt="Prévia de theGrove" width="460"></a><br>
+<strong><a href="plugins/theGrove">theGrove</a></strong><br>
+<sub>Planta vetorial, vaso, crescimento e próxima rega.<br>Original: viewerofall-labs · MIT · <a href="plugins/theGrove/NOTICE.md">Créditos e alterações</a></sub>
+</td>
+<td width="50%" valign="top">
+<a href="plugins/DesktopCountdown"><img src="docs/previews/countdown.png" alt="Prévia de DesktopCountdown" width="460"></a><br>
+<strong><a href="plugins/DesktopCountdown">DesktopCountdown</a></strong><br>
+<sub>Eventos com imagem, subtítulo e contagem de dias.<br>Original: nfoert · GPL-3.0 · <a href="plugins/DesktopCountdown/NOTICE.md">Créditos e alterações</a></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/weatherArt"><img src="docs/previews/weather.png" alt="Prévia de weatherArt" width="460"></a><br>
+<strong><a href="plugins/weatherArt">weatherArt</a></strong><br>
+<sub>Cartão compacto para o clima nativo do DMS.<br>Original: viewerofall-labs · MIT · <a href="plugins/weatherArt/NOTICE.md">Créditos e alterações</a></sub>
+</td>
+<td width="50%" valign="top">
+<a href="plugins/DankAlbumWidget"><img src="docs/previews/album.png" alt="Prévia de DankAlbumWidget" width="460"></a><br>
+<strong><a href="plugins/DankAlbumWidget">DankAlbumWidget</a></strong><br>
+<sub>Capa quadrada e controles de reprodução.<br>Original: kmf · MIT · <a href="plugins/DankAlbumWidget/NOTICE.md">Créditos e alterações</a></sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="plugins/DankTodo"><img src="docs/previews/todo.png" alt="Prévia de DankTodo" width="460"></a><br>
+<strong><a href="plugins/DankTodo">DankTodo</a></strong><br>
+<sub>Tarefas locais e acesso por monitor.<br>Original: deepu105 · MIT · <a href="plugins/DankTodo/NOTICE.md">Créditos e alterações</a></sub>
+</td>
+<td></td>
+</tr>
+</table>
 
 ## Instalar
 
