@@ -6,6 +6,23 @@ Superfícies Graphite translúcidas, tipografia legível e movimento discreto. U
 coleção com **8 plugins autorais**, **5 adaptações creditadas** e um tema opcional.
 Testada originalmente em **DMS 1.4.6 + Niri**, em notebook e monitor ultrawide.
 
+**[Instalar](#instalar)** · [NixOS](#nixos) · [Atualizar e remover](#atualizar-e-remover) ·
+[Resolver problemas](#resolver-problemas) · [Documentação](#documentação)
+
+## O que este projeto entrega
+
+Plugins independentes para personalizar um DMS já instalado. Escolha somente os
+componentes que quiser; a coleção não instala o sistema operacional, o compositor
+nem uma configuração pessoal completa.
+
+| Tipo | Componentes |
+|---|---|
+| Desktop autoral | QuietClock, NordMediaCard, AnimeGallery, CommandShelf |
+| Barra e popouts autorais | NordHub, QuickShortcuts, BitwardenBar |
+| Seletor de wallpapers | DayzWallpapers |
+| Adaptações | theGrove, DesktopCountdown, weatherArt, DankAlbumWidget, DankTodo |
+| Tema opcional | Graphite |
+
 ## Coleção autoral · MIT
 
 <p>Prévias ilustrativas com dados fictícios. Clique na imagem ou no nome para abrir o componente.</p>
@@ -115,18 +132,22 @@ duas cópias ativas do mesmo ID.
 
 ## Catálogo da comunidade
 
-O pedido inicial de sete plugins foi [enviado para avaliação no catálogo oficial](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
-Após a revisão automática, o primeiro lote foi reduzido a quatro plugins e corrigido.
-A [última revisão automática](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063#issuecomment-6305964878) marcou o envio como **ready**, com observações menores tratadas no código.
-O player fica em um lote separado; o relógio foi retirado por sobreposição com
-outros relógios e BitwardenBar por depender de um fork. A descrição foi substituída pelo texto do autor e o pedido
-está novamente pronto para revisão.
-A inclusão depende da aprovação dos mantenedores; enquanto isso, instale pelo repositório.
-As cinco adaptações permanecem disponíveis aqui, com os créditos e IDs de origem.
+A proposta de inclusão pode ser acompanhada no
+[PR do catálogo da comunidade](https://github.com/duxlabs-dev/dux-plugin-registry/pull/1063).
+O estado da revisão está no próprio PR. A instalação pelo repositório funciona
+independentemente da inclusão no catálogo.
 
 ## Instalar
 
-Requer DMS/Quickshell funcionando e Python 3 para o instalador.
+### Requisitos
+
+- DankMaterialShell/Quickshell já funcionando; a referência de compatibilidade
+  original é DMS 1.4.6.
+- Git e Python 3 para instalação pelo checkout.
+- Para players, um aplicativo que exponha MPRIS.
+- Para BitwardenBar, o daemon compatível indicado abaixo.
+
+Execute como seu usuário, sem `sudo`:
 
 ```bash
 git clone https://github.com/Matheuscara/dayzWidgets.git
@@ -138,7 +159,8 @@ python3 scripts/install.py --plugin QuietClock --plugin NordMediaCard
 
 Para a coleção completa, use `--all`. O instalador cria links em
 `$XDG_CONFIG_HOME/DankMaterialShell/plugins` (ou `~/.config/...`). Mantenha o clone
-nesse local. Ele não reinicia o shell, não habilita plugins, não troca o wallpaper
+no caminho em que foi instalado, pois os links apontam para ele. O instalador não
+reinicia o shell, não habilita plugins, não troca o wallpaper
 nem regrava suas preferências. Se já houver uma pasta com o mesmo nome, recusa
 substituir; `--replace` guarda a instalação anterior em um backup antes de trocar.
 
@@ -154,7 +176,85 @@ são configuradas por quem instala. O BitwardenBar requer o daemon
 compatível do [fork Bitwarden](https://github.com/Matheuscara/dms-bitwarden-cli);
 sem ele, o acesso fica desativado e nenhum login é feito automaticamente.
 
-[Configuração e exemplos](docs/CONFIGURATION.md) · [NixOS](docs/NIXOS.md) · [Licenças](THIRD_PARTY.md)
+### Instalar somente o seletor de wallpapers
+
+[Dayz Wallpapers tem um repositório próprio](https://github.com/Matheuscara/dayzWallpapers),
+com Python incluído e módulos NixOS/Home Manager. Com Nix e DMS instalados:
+
+```bash
+nix run github:Matheuscara/dayzWallpapers
+```
+
+Use uma única instalação do plugin: ele mantém o mesmo ID nas duas distribuições.
+
+## NixOS
+
+Adicione o input ao flake:
+
+```nix
+inputs.dayzWidgets.url = "github:Matheuscara/dayzWidgets";
+```
+
+Inclua `inputs.dayzWidgets.nixosModules.default` na lista `modules` do sistema,
+junto ao módulo do DMS.
+
+O módulo instala as fontes da coleção e requer que o módulo do DMS já forneça
+`programs.dms-shell.plugins`. Habilitação, instâncias e preferências continuam
+sendo configuradas na interface do shell. Para instalar só alguns plugins e
+consultar as limitações, veja o [guia NixOS](docs/NIXOS.md).
+
+## Atualizar e remover
+
+Para instalações pelo checkout, dentro do clone:
+
+```bash
+git status --short
+git pull --ff-only
+```
+
+Preserve alterações locais antes de atualizar. Os links passam a apontar para o
+código atualizado; reinicie o DMS quando conveniente para recarregar os plugins.
+Para adicionar componentes, execute novamente o instalador com `--plugin NOME`.
+
+| Opção do instalador | Uso |
+|---|---|
+| `--list` | Listar diretórios, IDs, tipos e licenças |
+| `--plugin NOME` | Instalar um plugin; pode repetir a opção |
+| `--all` | Instalar a coleção inteira |
+| `--dry-run` | Mostrar as operações sem gravar |
+| `--replace` | Preservar uma instalação conflitante em backup e substituí-la |
+| `--config-home CAMINHO` | Usar outra raiz de configuração |
+
+Os backups ficam em `DankMaterialShell/backups/dayz-<data>/` dentro da raiz de
+configuração. `--replace` troca a instalação, mantendo as preferências do DMS.
+
+Para remover, desabilite o plugin no DMS, retire sua instância da barra/desktop
+e remova somente o link correspondente em `DankMaterialShell/plugins/`.
+Preserve preferências e backups se quiser reinstalar depois. Em instalação
+NixOS, remova a declaração correspondente e aplique sua configuração normalmente.
+
+## Resolver problemas
+
+| Sintoma | O que conferir |
+|---|---|
+| Plugin instalado, mas não aparece | Habilitação em Plugins e instância no desktop ou na composição da barra |
+| Instalação existente impede continuar | Reveja o destino; `--replace` preserva a instalação anterior em backup |
+| Plugin parou após mover o clone | Reinstale a partir do novo caminho com `--replace` |
+| Player sem capa ou controles | Abra um aplicativo com MPRIS e inicie a reprodução |
+| Bitwarden indisponível | Instalação e funcionamento do daemon compatível |
+| Duas versões do mesmo plugin | Escolha uma origem: coleção, upstream ou instalação declarativa |
+
+Ao reportar um erro, informe plugin, versão do DMS, compositor, método de instalação
+e passos para reproduzir. Remova credenciais e dados pessoais dos logs e capturas.
+
+## Documentação
+
+- [Configuração dos componentes e exemplos](docs/CONFIGURATION.md).
+- [Integração declarativa com NixOS](docs/NIXOS.md).
+- [Manifesto da coleção](plugins.json).
+- [Origem, alterações e licenças de terceiros](THIRD_PARTY.md).
+- [Prévias da galeria](docs/previews/README.md).
+- Cada pasta em [plugins/](plugins/) contém a documentação do componente.
 
 ## Movimento e desempenho
 
@@ -192,14 +292,3 @@ são bem-vindos com versão e logs sem dados sensíveis.
 
 Código autoral: [MIT](LICENSE). Cada adaptação mantém sua própria licença;
 **DesktopCountdown é GPL-3.0**, não MIT. Veja [THIRD_PARTY.md](THIRD_PARTY.md).
-
-### Instalar somente o seletor de wallpapers
-
-[Dayz Wallpapers tem um repositório próprio](https://github.com/Matheuscara/dayzWallpapers),
-com Python incluído e módulos NixOS/Home Manager. Com DMS 1.4.6+ instalado:
-
-```bash
-nix run github:Matheuscara/dayzWallpapers
-```
-
-Não mantenha outra instalação do mesmo plugin ao usar esse comando.
